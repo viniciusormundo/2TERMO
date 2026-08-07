@@ -11,4 +11,5 @@ console.log('\nMedia final de ${nome}: ${media.toFixed(1)}');
 if (media >= 7) {
     console.log("Situação: Aprovado");
 } else if (media >=5 && media < 7){
-    console.log()
+    console.log()("Situação: Recuperação");
+    } else {    
