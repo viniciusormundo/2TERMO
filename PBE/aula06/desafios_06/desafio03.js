@@ -6,8 +6,8 @@ function calcular_area(largura, comprimento){
     return largura * comprimento;
 };
 
-const largura = entrada.questionInt("Informe a largura do terreno [m]: ");
-const comprimento = entrada.questionInt("Informe o comprimento do terreno [m]: ");
+const largura = entrada.questionInt("Informe a largura do terreno [m²]: ");
+const comprimento = entrada.questionInt("Informe o comprimento do terreno [m²]: ");
 
 const area = calcular_area(largura, comprimento);
 
