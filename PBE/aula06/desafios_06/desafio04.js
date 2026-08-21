@@ -1,9 +1,9 @@
 const entrada = require("readline-sync")
 
 const cinema = [
-    {nome: "Backrooms", classificacao: "Terror", idade_minima: 16},
+    {nome: "shaknado", classificacao: "comédia-ficção", idade_minima: 16},
     {nome: "Homem-aranha", classificacao: "Ficção", idade_minima: 12},
-    {nome: "Pixels", classificacao: "Comédia", idade_minima: 10},
+    {nome: "amor de aluguel", classificacao: "romantico", idade_minima: 10},
 ];
 
 const idade = entrada.questionInt("Informe sua idade: ");
