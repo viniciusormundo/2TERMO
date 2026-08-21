@@ -8,7 +8,7 @@ const cinema = [
 
 const idade = entrada.questionInt("Informe sua idade: ");
 
-console.log("Filmes que você pode assistir:");
+console.log("Filmes que você pode assistir: ");
 
 for (let i = 0; i < cinema.length; i++) {
     if (idade >= cinema[i].idade_minima) {
