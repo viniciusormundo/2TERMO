@@ -1,6 +1,6 @@
 const entrada = require('readline-syc');
 
-const nome = entrada
+const nome = entrada.question("Digite o nome do aluno: ");
 const n1 = entrada.questionFloat("Nota 1: ");
 const n2 = entrada.questionFloat("nota 2: ");
 
@@ -14,4 +14,8 @@ if (media >= 7) {
     console.log("Situação: Recuperação");
 } else {
     console.log("Situação: Reprovado");
+<<<<<<< HEAD
 }   
+=======
+}
+>>>>>>> 1f43c09f3822e0fb8dc89bff0dc5bf12cdbab04d
