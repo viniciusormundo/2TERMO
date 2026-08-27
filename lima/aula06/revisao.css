@@ -1,0 +1,35 @@
+body{
+    background-color:black;
+    color:blueviolet ;
+}
+
+header{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    border-color: rgb(36, 219, 219);
+    border-radius: 40px;
+}
+
+nav a{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: dashed;
+    text-align: center;
+
+}
+.bemvindo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 30px;
+
+}
+img{
+    height: 300px;
+    width: 150px;
+    position: center;
+    top: 30px;
+    left: 30px;
+}
+
+footer{
+    background-color: rgb(139, 8, 172);
+    margin: auto;
+    padding: 20px;
+}
