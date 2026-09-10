@@ -18,7 +18,7 @@ header h1 {
     font-size: 24px;
 }
 
-.nav a {
+.nav  {
     color: white;
     margin: 0 5px;
     font-size: 13px;
@@ -46,13 +46,38 @@ h2 {
     font-weight: bold;
 }
 
-.servico1, .servico2, .servico3, .servico4 {
+.servico1 {
     background-color: #d0e1f0;
     padding: 10px;
     margin-bottom: 10px;
 }
 
-.equipe article, section article {
+.servico2 {
+    background-color: #d0e1f0;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.servico3 {
+    background-color: #d0e1f0;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.servico4 {
+    background-color: #d0e1f0;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.equipe article {
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+section article {
     background-color: #eee;
     border: 1px solid #ddd;
     padding: 10px;
