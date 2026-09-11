@@ -22,3 +22,4 @@ module.exports = {
     verificarGarantia,
     ComDesconto
 }
+// isso define oque sera exportado para outros arquivos, nesse caso o app.js, que vai usar essas funcoes.

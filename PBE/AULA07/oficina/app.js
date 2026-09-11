@@ -2,7 +2,8 @@
 const entrada = require('readline-sync')
 
 //importa o modulo funcoesOficina
-const oficina = require('./funcoesoficina')
+const oficina = require('./funcoesoficina') 
+//usa isso para chamar o exports que esta em oureo arquivo
 
 console.log("=== SISTEMA DE GESTAO DE OFICINA ===")
 
