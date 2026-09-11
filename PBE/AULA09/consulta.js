@@ -8,10 +8,8 @@ try {
     const dadosTexto = fs.readFileSync('estoque.json', 'utf-8');
     const produtos = JSON.parse(dadosTexto);
 
-    const termoBusca = entrada.question(
-        "Digite o nome do produto para buscar: "
-);
-    const resultado = produtos.find(p => p.qntd <= 100);
+    const termoBusca = entrada.question("Digite o nome do produto para buscar: ");
+    const resultado = produtos.find(p => p.nome.includes(termoBusca) && p.qntd <= 100);
    
     if (resultado) {
         console.log("\nPRODUTO ENCONTRADO");
@@ -20,7 +18,6 @@ try {
         console.log(`Quantidade em estoque: ${resultado.qtd}`);
 
 } else {
-
         console.log("\nProduto não cadastrado no sistema");
 }
 } catch (erro) {
