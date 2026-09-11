@@ -13,12 +13,3 @@ if (idade >= 18 && renda >= 2500 || temImovel ===  true) {
 } else {
     console.log(`\nInfelizmente ${nome}, voce nao foi aprovado para o emprestimo!`);
 }
-
-
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> 1f43c09f3822e0fb8dc89bff0dc5bf12cdbab04d
