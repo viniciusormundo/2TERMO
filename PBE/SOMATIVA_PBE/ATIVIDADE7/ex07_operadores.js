@@ -1,14 +1,13 @@
 const entrada = require('readline-sync');
-const nomes = []
+const operadores = [];
 
-
-const quantidade = entrada.questionInt('Quantas notas você deseja inserir? ');
-
-for (let i = 0; i < quantidade; i++) {
-    let nome = entrada.question(`Digite o nome ${i + 1}: `);
-    nomes.push(nome);
+for (let i = 0; i < 5; i++) {
+	const nome = entrada.question(`nome do operador ${i + 1}: `);
+	operadores.push(nome);
 }
 
+console.log('\nOperadores que foram cadastrados:');
 
-console.log("\nNomes cadastrados:");
-console.log(nomes);
+for (let i = 0; i < operadores.length; i++) {
+	console.log(`${i + 1} - ${operadores[i]}`);
+}
