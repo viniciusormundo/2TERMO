@@ -1,0 +1,59 @@
+body{
+    background-color: white;
+}
+
+header{
+    text-align: center;
+    background-color:rgb(0, 0, 145);
+    color: rgb(255, 255, 255);
+    padding: 20px 20px 30px;
+   font-family: Arial, Helvetica, sans-serif
+}
+
+.bemvindo {
+    color: blue;
+    
+}
+
+.sobre{
+    text-align: center;
+    background-color: white;
+    color: blue;
+}
+
+h2{
+    text-align: center;
+}
+
+.missao{
+    color: blue;
+    text-align: left;
+}
+
+.nav{
+    color: white;
+}
+
+.img{
+    text-align: right;
+}
+
+.servico1{
+    background-color: cornflowerblue;
+}
+
+.servico2{
+    background-color: cornflowerblue;
+}
+
+.servico3{
+    background-color: cornflowerblue;
+}
+
+.servico4{
+    background-color: cornflowerblue;
+}
+
+.equipe{
+    text-align: center;
+}
