@@ -37,7 +37,7 @@ CREATE TABLE pedido (
 CREATE TABLE item_pedido (
     id_item INT PRIMARY KEY AUTO_INCREMENT,
     id_pedido INT NOT NULL,
-    id_prduto INT NOT NULL,
+    id_produto INT NOT NULL,
     quantidade INT NOT NULL,
     preco_unitario DECIMAL (10,2),
     observacao VARCHAR(150),
@@ -61,8 +61,6 @@ CREATE TABLE pagamento (
     (id_forma_pagamento) REFERENCES forma_pagamento
     (id_forma_pagamento)
 );
-
-SELECT * FROM produto;
 
 INSERT INTO cliente (nome, email, telefone, cidade, ativo)VALUES
 ('Luis felipe','luis@gmail.com', '1999999901', 'Limeira', TRUE),
@@ -92,14 +90,80 @@ INSERT INTO categoria (nome) VALUES
 INSERT INTO produto (nome, preco, ativo, id_categoria) VALUES
 ('Café expresso', 5.00, TRUE, 1),
 ('Capuccino', 6.50, TRUE, 2),
-('Bebidas geladas', 8.00, TRUE, 3),
-('Doces', 9.50, TRUE, 4),
-('Salgados', 10.00, TRUE, 5),
-('Combos', 21.90, TRUE, 6);
+('Refri', 8.00, TRUE, 3),
+('Tortas de limao', 9.50, TRUE, 4),
+('Coxinha', 10.00, TRUE, 5),
+('Salgado + coxinha + Refri', 21.90, TRUE, 6);
 
-INSERT pedido (data_pedido, status_pedido, valor_total, id_cliente) VALUES
+INSERT INTO pedido (data_pedido, status_pedido, valor_total, id_cliente) VALUES
 (NOW(), 'ABERTO', 0.00,1),
 ('2026-10-02 08:30:00','FINALIZADO', 0.00,1),
-(NOW(),'ABERTO',0.00,1),
+(NOW(),'ABERTO',0.00,1);
 
 
+INSERT INTO item_pedido (id_pedido, id_prduto, quantidade, preco_unitario, observacao) VALUES 
+(1, 1, 2, 5.00, 'Sem açúcar'),
+(1, 5, 1, 10.00, 'Bem quente'),
+(2, 6, 1, 21.90, 'Para viagem'),
+(3, 2, 2, 6.50, 'Com canela extra');
+
+INSERT INTO forma_pagamento (descricao) VALUES -- nao necessita de ID, pois não acompanha essa tabela INSERT--
+('Debito'),
+('Credito'),
+('Pix'),
+('Dinheiro');
+
+INSERT INTO pagamento (id_pedido, id_forma_pagamento, valor, data_pagamento) VALUES 
+(1, 1, 15.00, NOW()),
+(2, 4, 21.90, NOW()),
+(3, 2, 11.50, '2026-09-24 10:30:00');
+
+--------------------------------------------------
+-- EXEMPLO NOVO DE INSERÇÃO DE DADOS PORÉM COM RECUPERAÇÃO DO ÚLTIMO ID
+INSERT INTO pedido (data_pedido, status_pedido, valor_total, id_cliente) 
+VALUES (NOW(), 'ABERTO', '0.00', 1);
+SET @pedido = LAST_INSERT_ID();
+SELECT @pedido;
+
+-- EX 2
+UPDATE produto
+SET preco = 1.00;
+-- ⚠️⚠️ NUNCA REALIZAR UM UPDATE SEM WHERE ⚠️⚠️ --
+
+-- EX 3
+UPDATE cliente
+SET telefone = '19998888802',
+    cidade = "Valinhos"
+WHERE id_cliente = 9;   
+
+-- EX 4 ajuste de valores
+UPDATE produto
+SET preco = preco * 1.05
+WHERE id_categoria = 1;
+
+-- EX 5: Ajustes de atualizações condicionais
+UPDATE produto
+SET preco = CASE
+    WHEN preco <= 20 THEN preco * 1.20
+    ELSE preco * 1.05
+END
+WHERE ativo = TRUE;
+
+-- EX 1: Apagar um cliente específico
+DELETE FROM cliente
+WHERE id_cliente = 11;
+
+-- EX 2 : Apagar todos os clientes inativos
+DELETE FROM cliente
+WHERE ativo = FALSE;
+
+-- EX 3 : Apagar todos os clientes de uma cidade específica
+DELETE FROM cliente
+WHERE cidade = 'Chicago';
+
+-- EX 4: Exclusão lógica
+UPDATE cliente
+SET ativo = FALSE
+WHERE id_cliente = 10;
+
+SELECT * FROM produto;
