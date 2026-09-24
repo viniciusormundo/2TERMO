@@ -18,7 +18,7 @@ VALUES
 
 -- 4
 INSERT INTO cliente (nome, email, telefone, cidade, ativo) 
-VALUES ('Mariana ', 'mariana@email.com', NULL, 'Curitiba', TRUE);
+VALUES ('vinicius ', 'vinicius@email.com', NULL, 'Chicago', TRUE);
 
 -- 5
 INSERT INTO pedido (id_cliente, data_pedido, valor_total) 
