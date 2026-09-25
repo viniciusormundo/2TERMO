@@ -1,0 +1,680 @@
+/* =================================
+   CONFIGURAÇÕES GERAIS
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    background: #ffffff;
+
+    color: #ffffff;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+
+/* =================================
+   CABEÇALHO
+================================= */
+
+.Comeco {
+    height: 32px;
+
+    flex-shrink: 0;
+
+    background: #8E120C;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 17px;
+}
+
+.Comeco h2 {
+    color: #ffffff;
+
+    font-size: 17px;
+}
+
+.Comeco nav {
+    display: flex;
+
+    gap: 15px;
+}
+
+.Comeco nav a {
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    transition: 0.2s;
+}
+
+.Comeco nav a:hover {
+    opacity: 0.7;
+}
+
+
+/* =================================
+   INÍCIO / BANNER
+================================= */
+
+.banner {
+    height: 147px;
+
+    background: #720C08;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 15px 22px;
+
+    scroll-margin-top: 32px;
+}
+
+.banner-texto {
+    width: 46%;
+}
+
+.banner-texto > p {
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 7px;
+
+    margin-bottom: 6px;
+}
+
+.banner-texto h1 {
+    color: #ffffff;
+
+    font-size: 15px;
+
+    line-height: 1.15;
+
+    margin-bottom: 6px;
+}
+
+.banner-texto h3 {
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    font-weight: normal;
+
+    margin-bottom: 18px;
+}
+
+.banner-texto a {
+    display: inline-block;
+
+    background: #99140E;
+
+    color: #ffffff;
+
+    padding: 5px 12px;
+
+    border-radius: 15px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 7px;
+
+    transition: 0.2s;
+}
+
+.banner-texto a:hover {
+    background: #B71B13;
+}
+
+.banner-image {
+    width: 48%;
+
+    height: 105px;
+
+    background: #990F0A;
+
+    border-radius: 13px;
+
+    overflow: hidden;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.banner-image img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =================================
+   SOBRE NÓS
+================================= */
+
+.sobre {
+    height: 148px;
+
+    background: #B71B13;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 17px 20px;
+
+    scroll-margin-top: 32px;
+}
+
+.sobre-imagem {
+    width: 48%;
+
+    height: 105px;
+
+    background: #A01B15;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.sobre-imagem img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.sobre-texto {
+    width: 43%;
+
+    color: #ffffff;
+}
+
+.sobre-texto h2 {
+    color: #ffffff;
+
+    font-size: 14px;
+
+    margin-bottom: 9px;
+}
+
+.linhas {
+    width: 100%;
+
+    height: 43px;
+
+    border-top: 1px solid #B7B7B7;
+
+    border-bottom: 1px solid #B7B7B7;
+
+    position: relative;
+}
+
+.linhas::after {
+    content: "";
+
+    position: absolute;
+
+    top: 15px;
+
+    left: 0;
+
+    width: 70%;
+
+    height: 1px;
+
+    background: #B7B7B7;
+}
+
+.sobre-texto a {
+    display: inline-block;
+
+    background: #8E120C;
+
+    color: #ffffff;
+
+    padding: 3px 8px;
+
+    border-radius: 10px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 7px;
+
+    margin-top: 7px;
+}
+
+
+/* =================================
+   PRODUTOS
+================================= */
+
+.cafes {
+    background: #6D0B07;
+
+    padding: 8px 27px 11px;
+
+    scroll-margin-top: 32px;
+}
+
+.secao-cabecalho {
+    text-align: center;
+
+    margin-bottom: 5px;
+}
+
+.secao-cabecalho p {
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 6px;
+}
+
+.secao-cabecalho h2 {
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+.lista-cafes {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 26px;
+}
+
+.card-cafe {
+    display: block;
+
+    background: #D9D9D9;
+
+    color: #111111;
+
+    border-radius: 7px;
+
+    overflow: hidden;
+
+    min-height: 118px;
+
+    transition: 0.2s;
+}
+
+.card-cafe:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.card-cafe img {
+    width: 100%;
+
+    height: 57px;
+
+    object-fit: cover;
+}
+
+.card-cafe h3 {
+    color: #111111;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 7px;
+
+    padding: 4px 7px 0;
+}
+
+.card-cafe p {
+    color: #111111;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 6px;
+
+    line-height: 1.2;
+
+    padding: 2px 7px;
+}
+
+.card-cafe strong {
+    display: block;
+
+    color: #111111;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 7px;
+
+    padding: 0 7px 5px;
+}
+
+
+/* =================================
+   AMBIENTE
+================================= */
+
+.ambiente {
+    height: 145px;
+
+    background: #C31D15;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px;
+
+    scroll-margin-top: 32px;
+}
+
+.ambiente-texto {
+    width: 47%;
+}
+
+.ambiente-texto > p:first-child {
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 6px;
+
+    margin-bottom: 9px;
+}
+
+.ambiente-texto h2 {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    line-height: 1.15;
+
+    margin-bottom: 8px;
+}
+
+.ambiente-texto p:nth-of-type(2) {
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 6px;
+
+    line-height: 1.4;
+
+    margin-bottom: 12px;
+}
+
+.ambiente-texto a {
+    display: inline-block;
+
+    background: #99140E;
+
+    color: #ffffff;
+
+    padding: 5px 9px;
+
+    border-radius: 10px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 6px;
+}
+
+.ambiente-imagem {
+    width: 49%;
+
+    height: 115px;
+
+    background: #720C08;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+.ambiente-imagem img {
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* =================================
+   CONTATO
+================================= */
+
+.contato {
+    min-height: 135px;
+
+    background: #5B0805;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 17px 8px;
+
+    scroll-margin-top: 32px;
+}
+
+.contato-texto {
+    width: 47%;
+}
+
+.contato-texto > p {
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 6px;
+
+    margin-bottom: 12px;
+}
+
+.contato-texto h2 {
+    color: #ffffff;
+
+    font-size: 14px;
+
+    margin-bottom: 12px;
+}
+
+.contato-texto span {
+    display: block;
+
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 6px;
+
+    line-height: 1.4;
+}
+
+.contato form {
+    width: 47%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.contato input,
+.contato textarea {
+    width: 100%;
+
+    border: none;
+
+    border-radius: 5px;
+
+    background: #D9D9D9;
+
+    color: #111111;
+
+    padding: 4px 7px;
+
+    font-size: 6px;
+
+    outline: none;
+}
+
+.contato input {
+    height: 17px;
+}
+
+.contato textarea {
+    height: 28px;
+
+    resize: none;
+}
+
+.contato button {
+    height: 17px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #C03A35;
+
+    color: #ffffff;
+
+    font-size: 6px;
+
+    cursor: pointer;
+}
+
+
+/* =================================
+   RODAPÉ
+================================= */
+
+footer {
+    height: 31px;
+
+    flex-shrink: 0;
+
+    background: #8E120C;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 17px;
+}
+
+footer h2 {
+    color: #ffffff;
+
+    font-size: 17px;
+}
+
+footer nav {
+    display: flex;
+
+    gap: 15px;
+}
+
+footer nav a {
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 7px;
+
+    transition: 0.2s;
+}
+
+footer nav a:hover {
+    opacity: 0.7;
+}
+
+
+/* =================================
+   RESPONSIVO
+================================= */
+
+@media (max-width: 600px) {
+
+    .Comeco {
+        padding: 0 10px;
+    }
+
+    .Comeco nav,
+    footer nav {
+        gap: 7px;
+    }
+
+    .Comeco nav a,
+    footer nav a {
+        font-size: 6px;
+    }
+
+    .banner {
+        padding: 12px;
+    }
+
+    .lista-cafes {
+        gap: 10px;
+    }
+
+    .cafes {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+}
