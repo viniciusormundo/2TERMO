@@ -77,7 +77,7 @@ INSERT INTO cliente (nome, email, telefone, cidade, ativo)VALUES
 ('Sophia','sophia@gmail.com', '1999999912', 'Taubaté', TRUE),
 ('Vanessa Queiroz','vanessa@gmail.com', '1999999913', 'Limeira', TRUE),
 ('Vinicius Henrique','vinciush@gmail.com', '1999999914', 'Limeira', TRUE),
-('Vinicius Oliveira','vinciuso@gmail.com', '1999999915', 'Chicago', TRUE)
+('Vinicius Oliveira','vinciuso@gmail.com', '1999999915', 'Chicago', TRUE);
 
 INSERT INTO categoria (nome) VALUES
 ('Coffe'), 
@@ -99,7 +99,6 @@ INSERT INTO pedido (data_pedido, status_pedido, valor_total, id_cliente) VALUES
 (NOW(), 'ABERTO', 0.00,1),
 ('2026-10-02 08:30:00','FINALIZADO', 0.00,1),
 (NOW(),'ABERTO',0.00,1);
-
 
 INSERT INTO item_pedido (id_pedido, id_prduto, quantidade, preco_unitario, observacao) VALUES 
 (1, 1, 2, 5.00, 'Sem açúcar'),
@@ -167,3 +166,65 @@ SET ativo = FALSE
 WHERE id_cliente = 10;
 
 SELECT * FROM produto;
+
+-- TRANSAÇÕES - SEGURANÇA PARA DML 
+START TRANSACTION;
+
+UPDATE produto
+SET preco = preco * 2.80
+WHERE id_categoria = 1;
+
+SELECT id_produto, nome, preco
+FROM produto
+WHERE id_categoria = 1;
+
+ROLLBACK;
+-- Desfaz o que fizemos errado ou volta uma transaçao
+COMMIT;
+-- valida o procedimento de transação
+START TRANSACTION;
+UPDATE cliente SET cidade = 'limeira' WHERE id_cliente = 48;
+SELECT *FROM cliente
+COMMIT;
+ROLLBACK;
+
+-- PROCEDIMENTO DE UMA COMPRA
+-- PASSO 1: REALIZAR CADASTRO CLIENTE
+
+INSERT INTO cliente (nome, email, telefone, cidade, ativo)
+VALUES ('Carlos Silva', 'carlos.silva@email.com', '1999999999', 'Santos', TRUE);
+
+SET @cliente_compra = LAST_INSERT_ID();
+
+-- PASSO 2: REALIZAR PEDIDO
+
+INSERT INTO pedido (data_pedido, status_pedido, valor_total, id_cliente)
+VALUES (NOW(), 'ABERTO', 0.00, @cliente_compra);
+
+SET @pedido_compra = LAST_INSERT_ID();
+
+-- PASSO 3: INSERIR ITENS
+
+INSERT INTO item_pedido (id_pedido, id_produto, quantidade, preco_unitario)
+VALUES
+(@pedido_compra, 4, 1, 13.00),
+(@pedido_compra, 9, 1, 9.00);
+
+-- PASSO 4 ATUALIZANDO TOTAL E STATUS
+UPDATE pedido
+SET valor_total = 22.00,
+    status = "PREPARANDO"
+WHERE id_pedido = @pedido_compra;
+
+-- PASSO REGISTRA PAGAMENTO
+INSERT INTO pagamento(id_pedido, id_forma_pagamento,valor,data_pagamento)
+VALUES (@pedido_compra,2,22.00,NOW());
+
+-- PASSO 6 CONSULTAR PEDIDO E RESULTADO
+SELECT p.id_pedido,
+       c.nome AS cliente,
+       p.status_pedido,
+       p.valor_total
+FROM pedido p 
+JOIN cliente c ON c.id_cliente = p.id_cliente
+WHERE p.id_pedido = @pedido_compra;
