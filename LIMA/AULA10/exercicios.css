@@ -1,5 +1,25 @@
 li {
     padding: 30px;
     margin: 30px;
+};
+
+.equipe{
+    display: flex;
+    /* align-items: flex-start; * Isso deixa em lista no começo */
+    align-items: center; /* Isso deixa em lista no meio do quadrado  */
+    /* justify-content: flex-end; Isso deixa em lista no fim */
+    justify-content: space-between; /* essa funçao ela da um espaçamento mais longo */
+    /* justify-content: space-evenly;  essa funçao ela da um espaçamento mais curto */
+    list-style: none;
+};
+
+.equipe li {
+    list-style: none;
+    padding: 20px;
+    background-color: #3498db;
 }
 
+.cards {
+display: flex;
+gap: 20px;
+}
