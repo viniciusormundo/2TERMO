@@ -1,0 +1,17 @@
+[
+  {
+    "nome": "serra",
+    "quantidade": 34,
+    "custoUnitario": 12
+  },
+  {
+    "nome": "lima",
+    "quantidade": 45,
+    "custoUnitario": 3.5
+  },
+  {
+    "nome": "prego",
+    "quantidade": 10000,
+    "custoUnitario": 0.10
+  }
+]
