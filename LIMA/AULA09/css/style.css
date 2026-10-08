@@ -1,40 +1,47 @@
-/* =========================================
-   CORES DO FIGMA
-========================================= */
-
 :root {
 
-    --verde-escuro: #113C2D;
+    --verde-escuro: #0D3B2E;
 
-    --verde: #235B44;
+    --verde: #205F48;
 
-    --verde-medio: #77917C;
+    --verde-medio: #78917F;
 
-    --verde-claro: #A2B5A1;
+    --verde-claro: #A9BBA9;
 
-    --bege: #E9E4D9;
+    --bege: #E9E4D8;
 
-    --dourado: #B89869;
+    --bege-claro: #F0ECE3;
+
+    --dourado: #BE9B67;
 
     --branco: #FFFFFF;
 
-    --texto: #49382C;
+    --texto: #4C3D34;
+
 }
 
 
-/* =========================================
-   CONFIGURAÇÕES
-========================================= */
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
+
 }
 
+
 html {
+
     scroll-behavior: smooth;
+
 }
+
 
 body {
 
@@ -43,23 +50,37 @@ body {
     color: var(--texto);
 
     font-family: "Poppins", sans-serif;
+
 }
+
 
 a {
-    text-decoration: none;
+
     color: inherit;
+
+    text-decoration: none;
+
 }
 
 
-/* =========================================
+button,
+input,
+textarea {
+
+    font-family: inherit;
+
+}
+
+
+/* =========================================================
    HEADER
-========================================= */
+========================================================= */
 
 .header {
 
-    width: 100%;
+    height: 64px;
 
-    height: 55px;
+    padding: 0 5%;
 
     background: var(--verde-escuro);
 
@@ -69,21 +90,23 @@ a {
 
     justify-content: space-between;
 
-    padding: 0 18px;
+    position: sticky;
 
-    border-bottom: 2px solid #2389E5;
+    top: 0;
+
+    z-index: 1000;
+
 }
 
 
 .logo {
 
-    font-family: "DM Serif Display", serif;
-
-    font-size: 25px;
-
     color: var(--branco);
 
-    white-space: nowrap;
+    font-family: "DM Serif Display", serif;
+
+    font-size: 29px;
+
 }
 
 
@@ -93,85 +116,72 @@ a {
 
     align-items: center;
 
-    gap: 20px;
+    gap: 28px;
+
 }
 
 
 .menu a {
 
-    font-family: "Bree Serif", serif;
-
-    font-size: 10px;
-
     color: var(--branco);
 
+    font-family: "Bree Serif", serif;
+
+    font-size: 12px;
+
     transition: 0.2s;
+
 }
 
 
 .menu a:hover {
 
     color: var(--dourado);
+
 }
 
 
-/* =========================================
-   ELEMENTOS GEOMÉTRICOS
-========================================= */
+.pedido-btn {
 
-.imagem-box {
+    border: none;
 
-    position: relative;
+    background: var(--dourado);
 
-    overflow: hidden;
+    color: var(--branco);
+
+    border-radius: 20px;
+
+    padding: 7px 13px;
+
+    cursor: pointer;
+
+    font-family: "Bree Serif", serif;
+
+    font-size: 11px;
+
 }
 
 
-.circulo {
+.pedido-btn span {
 
-    position: absolute;
-
-    width: 48px;
-
-    height: 48px;
+    background: var(--verde-escuro);
 
     border-radius: 50%;
 
-    background: var(--branco);
+    padding: 2px 6px;
 
-    top: 17px;
+    margin-left: 4px;
 
-    right: 30px;
 }
 
 
-.triangulo {
-
-    position: absolute;
-
-    width: 0;
-
-    height: 0;
-
-    border-left: 35px solid transparent;
-
-    border-right: 35px solid transparent;
-
-    border-bottom: 60px solid var(--branco);
-
-    left: 65px;
-
-    bottom: 30px;
-}
-
-
-/* =========================================
+/* =========================================================
    HERO
-========================================= */
+========================================================= */
 
 .hero {
 
-    min-height: 150px;
+    min-height: 300px;
 
     background: var(--verde-medio);
 
@@ -183,9 +193,10 @@ a {
 
     align-items: center;
 
-    gap: 25px;
+    gap: 40px;
 
-    padding: 18px 25px;
+    padding: 35px 7%;
+
 }
 
 
@@ -193,11 +204,12 @@ a {
 
     font-family: "DM Serif Display", serif;
 
-    font-size: 27px;
+    font-size: clamp(34px, 4vw, 54px);
 
-    line-height: 1.1;
+    line-height: 1.05;
 
-    margin-bottom: 5px;
+    margin-bottom: 7px;
+
 }
 
 
@@ -205,9 +217,10 @@ a {
 
     font-family: "Bree Serif", serif;
 
-    font-size: 10px;
+    font-size: 14px;
 
-    margin-bottom: 17px;
+    margin-bottom: 25px;
+
 }
 
 
@@ -219,67 +232,128 @@ a {
 
     justify-content: center;
 
+    padding: 10px 20px;
+
     background: var(--verde-escuro);
 
     color: var(--branco);
 
     border-radius: 20px;
 
-    padding: 7px 15px;
-
     font-family: "Bree Serif", serif;
 
-    font-size: 9px;
+    font-size: 12px;
 
-    transition: 0.2s;
+    transition: 0.25s;
+
 }
 
 
 .botao:hover {
 
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 
-    background: var(--verde);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+
 }
 
 
-/* IMAGEM PRINCIPAL */
+/* =========================================================
+   IMAGENS / FORMAS DO FIGMA
+========================================================= */
+
+.imagem-box {
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
 
 .imagem-principal {
 
-    height: 108px;
+    height: 220px;
 
     background: var(--verde);
 
     border-radius: 15px;
 
-    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 7px 12px rgba(0, 0, 0, 0.18);
+
 }
 
 
-.imagem-principal span {
+.circulo {
 
     position: absolute;
 
-    bottom: 12px;
+    width: 60px;
+
+    height: 60px;
+
+    border-radius: 50%;
+
+    background: var(--branco);
+
+    top: 18px;
+
+    right: 35px;
+
+}
+
+
+.triangulo {
+
+    position: absolute;
+
+    width: 0;
+
+    height: 0;
+
+    border-left: 42px solid transparent;
+
+    border-right: 42px solid transparent;
+
+    border-bottom: 70px solid var(--branco);
+
+    left: 50%;
+
+    bottom: 38px;
+
+    transform: translateX(-50%);
+
+}
+
+
+.imagem-box span {
+
+    position: absolute;
+
+    bottom: 18px;
+
+    left: 0;
 
     width: 100%;
 
     text-align: center;
 
+    color: var(--branco);
+
     font-family: "Bree Serif", serif;
 
-    font-size: 8px;
+    font-size: 10px;
+
 }
 
 
-/* =========================================
+/* =========================================================
    SOBRE
-========================================= */
+========================================================= */
 
 .sobre {
 
-    min-height: 152px;
+    min-height: 300px;
 
     background: var(--bege);
 
@@ -289,47 +363,49 @@ a {
 
     align-items: center;
 
-    gap: 20px;
+    gap: 45px;
 
-    padding: 18px 22px;
+    padding: 35px 7%;
+
 }
 
 
 .imagem-sobre {
 
-    height: 108px;
+    height: 220px;
 
     background: var(--verde-escuro);
 
     border-radius: 15px;
 
-    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.18);
+
 }
 
 
 .imagem-sobre .circulo {
 
-    width: 35px;
+    width: 48px;
 
-    height: 35px;
-
-    right: 35px;
+    height: 48px;
 
     top: 20px;
+
+    right: 50px;
+
 }
 
 
 .imagem-sobre .triangulo {
 
-    border-left-width: 30px;
+    border-left-width: 35px;
 
-    border-right-width: 30px;
+    border-right-width: 35px;
 
-    border-bottom-width: 52px;
+    border-bottom-width: 60px;
 
-    left: 65px;
+    bottom: 35px;
 
-    bottom: 25px;
 }
 
 
@@ -337,9 +413,23 @@ a {
 
     font-family: "DM Serif Display", serif;
 
-    font-size: 22px;
+    font-size: 31px;
 
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+
+}
+
+
+.sobre-texto p {
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    max-width: 450px;
+
+    margin: 16px 0;
+
 }
 
 
@@ -349,61 +439,62 @@ a {
 
     flex-direction: column;
 
-    gap: 8px;
+    gap: 7px;
 
-    margin-bottom: 12px;
 }
 
 
 .linhas span {
 
-    display: block;
-
     width: 100%;
 
     height: 1px;
 
-    background: #9E9990;
+    background: #99938A;
+
 }
 
 
 .linhas span:nth-child(2) {
 
-    width: 90%;
+    width: 88%;
+
 }
 
 
 .linhas span:nth-child(3) {
 
-    width: 70%;
+    width: 68%;
+
 }
 
 
 .linhas span:nth-child(4) {
 
     width: 45%;
+
 }
 
 
 .botao-menor {
 
-    padding: 4px 10px;
+    padding: 7px 13px;
 
-    font-size: 8px;
+    font-size: 10px;
+
 }
 
 
-/* =========================================
+/* =========================================================
    PRODUTOS
-========================================= */
+========================================================= */
 
 .produtos {
 
     background: var(--verde);
 
-    min-height: 165px;
+    padding: 25px 7% 35px;
 
-    padding: 10px 27px 15px;
 }
 
 
@@ -413,7 +504,8 @@ a {
 
     color: var(--branco);
 
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+
 }
 
 
@@ -423,7 +515,8 @@ a {
 
     font-family: "Bree Serif", serif;
 
-    font-size: 7px;
+    font-size: 11px;
+
 }
 
 
@@ -431,9 +524,62 @@ a {
 
     font-family: "DM Serif Display", serif;
 
-    font-size: 17px;
+    font-size: 27px;
+
 }
 
+
+/* =========================================================
+   FILTROS
+========================================================= */
+
+.filtros {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.filtro {
+
+    border: 1px solid rgba(255,255,255,0.5);
+
+    background: transparent;
+
+    color: var(--branco);
+
+    border-radius: 20px;
+
+    padding: 5px 12px;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+}
+
+
+.filtro.ativo,
+.filtro:hover {
+
+    background: var(--bege);
+
+    color: var(--verde-escuro);
+
+}
+
+
+/* =========================================================
+   CARDS
+========================================================= */
 
 .cards {
 
@@ -441,7 +587,8 @@ a {
 
     grid-template-columns: repeat(3, 1fr);
 
-    gap: 22px;
+    gap: 25px;
+
 }
 
 
@@ -449,51 +596,67 @@ a {
 
     background: var(--bege);
 
-    border-radius: 6px;
+    border-radius: 8px;
 
     overflow: hidden;
+
+    transition: 0.25s;
+
+}
+
+
+.card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.15);
+
 }
 
 
 .card-imagem {
 
-    height: 57px;
+    height: 105px;
 
     background: var(--verde-claro);
 
     position: relative;
+
 }
 
 
 .card-imagem .pequeno {
 
-    width: 27px;
+    width: 40px;
 
-    height: 27px;
+    height: 40px;
 
-    top: 8px;
+    top: 13px;
 
-    right: 10px;
+    right: 18px;
+
 }
 
 
 .pequeno-triangulo {
 
-    border-left-width: 20px;
+    border-left-width: 25px;
 
-    border-right-width: 20px;
+    border-right-width: 25px;
 
-    border-bottom-width: 32px;
+    border-bottom-width: 40px;
 
-    left: 27px;
+    left: 30%;
 
-    bottom: 7px;
+    bottom: 15px;
+
 }
 
 
 .card-texto {
 
-    padding: 6px 8px;
+    padding: 11px 12px 12px;
+
 }
 
 
@@ -501,9 +664,10 @@ a {
 
     font-family: "Bree Serif", serif;
 
-    font-size: 9px;
+    font-size: 15px;
 
-    color: var(--texto);
+    margin-bottom: 4px;
+
 }
 
 
@@ -511,31 +675,74 @@ a {
 
     font-family: "Bree Serif", serif;
 
-    font-size: 7px;
+    font-size: 10px;
 
-    line-height: 1.2;
+    line-height: 1.35;
 
-    min-height: 27px;
+    min-height: 35px;
+
+}
+
+
+.card-final {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 7px;
+
 }
 
 
 .card-texto strong {
 
-    display: block;
-
     font-family: "Bree Serif", serif;
 
-    font-size: 8px;
+    font-size: 12px;
+
 }
 
 
-/* =========================================
+.adicionar {
+
+    width: 28px;
+
+    height: 28px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--verde-escuro);
+
+    color: var(--branco);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    line-height: 20px;
+
+}
+
+
+.adicionar:hover {
+
+    background: var(--dourado);
+
+}
+
+
+/* =========================================================
    AMBIENTE
-========================================= */
+========================================================= */
 
 .ambiente {
 
-    min-height: 150px;
+    min-height: 300px;
 
     background: var(--verde-escuro);
 
@@ -547,9 +754,10 @@ a {
 
     align-items: center;
 
-    gap: 25px;
+    gap: 45px;
 
-    padding: 18px 22px;
+    padding: 35px 7%;
+
 }
 
 
@@ -557,9 +765,10 @@ a {
 
     font-family: "Bree Serif", serif;
 
-    font-size: 8px;
+    font-size: 11px;
 
     text-transform: uppercase;
+
 }
 
 
@@ -567,11 +776,12 @@ a {
 
     font-family: "DM Serif Display", serif;
 
-    font-size: 19px;
+    font-size: 31px;
 
-    line-height: 1.15;
+    line-height: 1.1;
 
-    margin: 3px 0 7px;
+    margin: 5px 0 10px;
+
 }
 
 
@@ -579,13 +789,38 @@ a {
 
     font-family: "Bree Serif", serif;
 
-    font-size: 7px;
+    font-size: 11px;
 
-    line-height: 1.35;
+    line-height: 1.5;
 
-    max-width: 190px;
+    max-width: 430px;
 
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+
+}
+
+
+.horario {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+    font-size: 10px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.horario strong {
+
+    font-family: "Bree Serif", serif;
+
+    font-size: 12px;
+
 }
 
 
@@ -593,57 +828,53 @@ a {
 
     background: var(--dourado);
 
-    color: var(--branco);
-
-    font-size: 7px;
-
-    padding: 6px 10px;
 }
 
 
 .imagem-ambiente {
 
-    height: 120px;
+    height: 235px;
 
     background: var(--dourado);
 
-    border-radius: 12px;
+    border-radius: 15px;
+
 }
 
 
 .ambiente-circulo {
 
-    width: 42px;
+    width: 62px;
 
-    height: 42px;
+    height: 62px;
 
-    top: 13px;
+    top: 20px;
 
-    right: 20px;
+    right: 35px;
+
 }
 
 
 .ambiente-triangulo {
 
-    border-left-width: 30px;
+    border-left-width: 42px;
 
-    border-right-width: 30px;
+    border-right-width: 42px;
 
-    border-bottom-width: 50px;
+    border-bottom-width: 70px;
 
-    left: 48px;
+    bottom: 45px;
 
-    bottom: 20px;
 }
 
 
-/* =========================================
+/* =========================================================
    CONTATO
-========================================= */
+========================================================= */
 
 .contato {
 
-    min-height: 138px;
+    min-height: 280px;
 
     background: var(--bege);
 
@@ -653,9 +884,10 @@ a {
 
     align-items: center;
 
-    gap: 25px;
+    gap: 45px;
 
-    padding: 18px 22px;
+    padding: 35px 7%;
+
 }
 
 
@@ -663,7 +895,8 @@ a {
 
     font-family: "Bree Serif", serif;
 
-    font-size: 7px;
+    font-size: 10px;
+
 }
 
 
@@ -671,23 +904,40 @@ a {
 
     font-family: "DM Serif Display", serif;
 
-    font-size: 19px;
+    font-size: 31px;
 
-    margin: 4px 0 7px;
+    margin: 5px 0 10px;
+
 }
 
 
-.contato-texto p {
+.contato-texto > p {
 
     font-family: "Bree Serif", serif;
 
-    font-size: 7px;
+    font-size: 10px;
 
-    line-height: 1.3;
+    line-height: 1.4;
+
 }
 
 
-/* FORMULÁRIO */
+.informacoes {
+
+    margin-top: 18px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+}
+
+
+/* =========================================================
+   FORMULÁRIO
+========================================================= */
 
 .formulario {
 
@@ -695,7 +945,8 @@ a {
 
     flex-direction: column;
 
-    gap: 6px;
+    gap: 9px;
+
 }
 
 
@@ -704,7 +955,7 @@ a {
 
     width: 100%;
 
-    border: 0;
+    border: none;
 
     outline: none;
 
@@ -712,15 +963,30 @@ a {
 
     color: var(--branco);
 
-    border-radius: 7px;
+    border-radius: 8px;
 
-    padding: 5px 9px;
+    padding: 10px 13px;
 
     font-family: "Bree Serif", serif;
 
-    font-size: 7px;
+    font-size: 10px;
 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+.formulario input {
+
+    height: 38px;
+
+}
+
+
+.formulario textarea {
+
+    height: 80px;
+
+    resize: none;
+
 }
 
 
@@ -728,52 +994,47 @@ a {
 .formulario textarea::placeholder {
 
     color: var(--branco);
-}
 
-
-.formulario textarea {
-
-    height: 30px;
-
-    resize: none;
 }
 
 
 .formulario button {
 
-    border: 0;
-
-    border-radius: 7px;
+    border: none;
 
     background: var(--verde-escuro);
 
     color: var(--branco);
 
-    padding: 5px;
+    border-radius: 8px;
 
-    font-family: "Bree Serif", serif;
-
-    font-size: 7px;
+    padding: 10px;
 
     cursor: pointer;
 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    font-family: "Bree Serif", serif;
+
+    font-size: 10px;
+
+    transition: 0.2s;
+
 }
 
 
 .formulario button:hover {
 
     background: var(--verde);
+
 }
 
 
-/* =========================================
+/* =========================================================
    FOOTER
-========================================= */
+========================================================= */
 
 .footer {
 
-    height: 35px;
+    min-height: 55px;
 
     background: var(--verde);
 
@@ -785,180 +1046,489 @@ a {
 
     justify-content: space-between;
 
-    padding: 0 18px;
+    padding: 0 5%;
+
 }
 
 
 .footer .logo {
 
-    font-size: 18px;
+    font-size: 23px;
+
 }
 
 
 .footer .menu {
 
-    gap: 18px;
+    gap: 22px;
+
 }
 
 
-.footer .menu a {
+/* =========================================================
+   MODAL DO PEDIDO
+========================================================= */
 
-    font-size: 8px;
+.pedido-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.25s;
+
+    z-index: 2000;
+
 }
 
 
-/* =========================================
+.pedido-overlay.aberto {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+.pedido-modal {
+
+    width: min(430px, 100%);
+
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    background: var(--bege);
+
+    border-radius: 15px;
+
+    padding: 25px;
+
+    position: relative;
+
+}
+
+
+.pedido-modal h2 {
+
+    font-family: "DM Serif Display", serif;
+
+    font-size: 27px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.fechar {
+
+    position: absolute;
+
+    right: 18px;
+
+    top: 15px;
+
+    width: 30px;
+
+    height: 30px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: var(--verde-escuro);
+
+    color: var(--branco);
+
+    cursor: pointer;
+
+    font-size: 20px;
+
+}
+
+
+.pedido-vazio {
+
+    text-align: center;
+
+    padding: 25px 0;
+
+    font-family: "Bree Serif", serif;
+
+}
+
+
+.item-pedido {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #c5bfb4;
+
+}
+
+
+.item-pedido div {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+.item-pedido strong {
+
+    font-family: "Bree Serif", serif;
+
+}
+
+
+.item-pedido span {
+
+    font-size: 11px;
+
+}
+
+
+.item-pedido button {
+
+    border: none;
+
+    background: transparent;
+
+    color: #9b3d3d;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+}
+
+
+.pedido-total {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin: 20px 0;
+
+    font-family: "Bree Serif", serif;
+
+    font-size: 17px;
+
+}
+
+
+.finalizar {
+
+    width: 100%;
+
+    border: none;
+
+    background: var(--verde-escuro);
+
+    color: var(--branco);
+
+    border-radius: 8px;
+
+    padding: 12px;
+
+    cursor: pointer;
+
+    font-family: "Bree Serif", serif;
+
+}
+
+
+.finalizar:hover {
+
+    background: var(--verde);
+
+}
+
+
+/* =========================================================
    RESPONSIVIDADE
-========================================= */
+========================================================= */
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
 
     .header {
 
         height: auto;
 
-        min-height: 55px;
+        min-height: 62px;
 
-        padding: 8px 15px;
+        flex-wrap: wrap;
 
         gap: 10px;
+
+        padding: 10px 5%;
+
     }
+
 
     .menu {
 
-        gap: 10px;
-    }
-
-    .menu a {
-
-        font-size: 8px;
-    }
-
-    .hero {
-
-        grid-template-columns: 1fr 1fr;
-
-        padding: 18px 15px;
-    }
-
-    .hero-texto h1 {
-
-        font-size: 22px;
-    }
-
-    .cards {
-
-        gap: 10px;
-    }
-
-    .produtos {
-
-        padding-left: 15px;
-
-        padding-right: 15px;
-    }
-
-    .ambiente,
-    .contato {
-
-        padding-left: 15px;
-
-        padding-right: 15px;
-    }
-}
-
-
-@media (max-width: 480px) {
-
-    .header {
-
-        flex-direction: column;
-
-        align-items: center;
-    }
-
-    .menu {
+        gap: 13px;
 
         flex-wrap: wrap;
 
         justify-content: center;
+
     }
 
-    .hero {
+
+    .menu a {
+
+        font-size: 10px;
+
+    }
+
+
+    .hero,
+    .sobre,
+    .ambiente,
+    .contato {
 
         grid-template-columns: 1fr;
 
+    }
+
+
+    .hero {
+
         text-align: center;
+
     }
 
-    .hero-texto .botao {
 
-        margin-top: 5px;
+    .hero-texto h1 {
+
+        font-size: 38px;
+
     }
+
 
     .imagem-principal {
 
         width: 90%;
 
         margin: auto;
+
     }
 
-    .sobre {
 
-        grid-template-columns: 1fr;
+    .sobre-texto {
+
+        text-align: center;
+
     }
+
+
+    .sobre-texto p {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+
+    .linhas {
+
+        align-items: center;
+
+    }
+
 
     .imagem-sobre {
 
         width: 90%;
 
         margin: auto;
+
     }
 
-    .sobre-texto {
+
+    .ambiente-texto {
 
         text-align: center;
+
     }
 
-    .cards {
 
-        grid-template-columns: 1fr;
+    .ambiente-texto p {
 
-        max-width: 220px;
+        margin-left: auto;
 
-        margin: auto;
+        margin-right: auto;
+
     }
 
-    .card-imagem {
 
-        height: 100px;
+    .horario {
+
+        align-items: center;
+
     }
 
-    .ambiente {
-
-        grid-template-columns: 1fr;
-    }
 
     .imagem-ambiente {
 
         width: 90%;
 
         margin: auto;
+
     }
 
+
+    .contato-texto {
+
+        text-align: center;
+
+    }
+
+
+    .informacoes {
+
+        align-items: center;
+
+    }
+
+
+    .cards {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .header {
+
+        justify-content: center;
+
+    }
+
+
+    .logo {
+
+        width: 100%;
+
+        text-align: center;
+
+    }
+
+
+    .menu {
+
+        gap: 9px;
+
+    }
+
+
+    .menu a {
+
+        font-size: 9px;
+
+    }
+
+
+    .pedido-btn {
+
+        font-size: 9px;
+
+        padding: 6px 10px;
+
+    }
+
+
+    .hero {
+
+        padding: 25px 15px;
+
+    }
+
+
+    .hero-texto h1 {
+
+        font-size: 32px;
+
+    }
+
+
+    .sobre,
+    .ambiente,
     .contato {
 
-        grid-template-columns: 1fr;
+        padding: 25px 15px;
+
     }
+
+
+    .imagem-principal,
+    .imagem-sobre,
+    .imagem-ambiente {
+
+        width: 100%;
+
+    }
+
+
+    .cards {
+
+        grid-template-columns: 1fr;
+
+        max-width: 270px;
+
+        margin: auto;
+
+    }
+
 
     .footer {
 
-        height: auto;
-
-        padding: 10px;
-
         flex-direction: column;
 
-        gap: 8px;
+        gap: 10px;
+
+        padding: 15px;
+
     }
+
+
+    .footer .menu {
+
+        justify-content: center;
+
+    }
+
 }

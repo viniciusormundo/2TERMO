@@ -1,14 +1,7 @@
 
 DROP DATABASE IF EXISTS SMARTCOFFE_DML_VINICIUS;
-
 CREATE DATABASE IF NOT EXISTS SMARTCOFFE_DML_VINICIUS;
-
 USE SMARTCOFFE_DML_VINICIUS;
-
-
--- =========================================================
--- CRIAÇÃO DAS TABELAS
--- =========================================================
 
 CREATE TABLE cliente (
     id_cliente INT PRIMARY KEY AUTO_INCREMENT,
@@ -19,12 +12,10 @@ CREATE TABLE cliente (
     ativo BOOLEAN NOT NULL DEFAULT TRUE
 );
 
-
 CREATE TABLE categoria (
     id_categoria INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(60) NOT NULL UNIQUE
 );
-
 
 CREATE TABLE produto (
     id_produto INT PRIMARY KEY AUTO_INCREMENT,
@@ -32,30 +23,17 @@ CREATE TABLE produto (
     preco DECIMAL(10,2) NOT NULL,
     ativo BOOLEAN NOT NULL DEFAULT TRUE,
     id_categoria INT NOT NULL,
-
-    CONSTRAINT fk_produto_categoria
-        FOREIGN KEY (id_categoria)
-        REFERENCES categoria (id_categoria)
+    CONSTRAINT fk_produto_categoria FOREIGN KEY (id_categoria) REFERENCES categoria (id_categoria)
 );
-
 
 CREATE TABLE pedido (
     id_pedido INT PRIMARY KEY AUTO_INCREMENT,
     data_pedido DATETIME NOT NULL,
-    status_pedido ENUM(
-        'ABERTO',
-        'PREPARANDO',
-        'FINALIZADO',
-        'CANCELADO'
-    ) NOT NULL,
+    status_pedido ENUM('ABERTO','PREPARANDO','FINALIZADO','CANCELADO') NOT NULL,
     valor_total DECIMAL(10,2) NOT NULL DEFAULT 0.00,
     id_cliente INT NOT NULL,
-
-    CONSTRAINT fk_pedido_cliente
-        FOREIGN KEY (id_cliente)
-        REFERENCES cliente (id_cliente)
+    CONSTRAINT fk_pedido_cliente FOREIGN KEY (id_cliente) REFERENCES cliente (id_cliente)
 );
-
 
 CREATE TABLE item_pedido (
     id_item INT PRIMARY KEY AUTO_INCREMENT,
@@ -64,22 +42,14 @@ CREATE TABLE item_pedido (
     quantidade INT NOT NULL,
     preco_unitario DECIMAL(10,2) NOT NULL,
     observacao VARCHAR(150),
-
-    CONSTRAINT fk_item_pedido
-        FOREIGN KEY (id_pedido)
-        REFERENCES pedido (id_pedido),
-
-    CONSTRAINT fk_item_produto
-        FOREIGN KEY (id_produto)
-        REFERENCES produto (id_produto)
+    CONSTRAINT fk_item_pedido FOREIGN KEY (id_pedido) REFERENCES pedido (id_pedido),
+    CONSTRAINT fk_item_produto FOREIGN KEY (id_produto) REFERENCES produto (id_produto)
 );
-
 
 CREATE TABLE forma_pagamento (
     id_forma_pagamento INT PRIMARY KEY AUTO_INCREMENT,
     descricao VARCHAR(40) NOT NULL UNIQUE
 );
-
 
 CREATE TABLE pagamento (
     id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
@@ -87,111 +57,88 @@ CREATE TABLE pagamento (
     id_forma_pagamento INT NOT NULL,
     valor DECIMAL(10,2) NOT NULL,
     data_pagamento DATETIME,
-
-    CONSTRAINT fk_pagamento_pedido
-        FOREIGN KEY (id_pedido)
-        REFERENCES pedido (id_pedido),
-
-    CONSTRAINT fk_pagamento_forma_pagamento
-        FOREIGN KEY (id_forma_pagamento)
-        REFERENCES forma_pagamento (id_forma_pagamento)
+    CONSTRAINT fk_pagamento_pedido FOREIGN KEY (id_pedido) REFERENCES pedido (id_pedido),
+    CONSTRAINT fk_pagamento_forma_pagamento FOREIGN KEY (id_forma_pagamento) REFERENCES forma_pagamento (id_forma_pagamento)
 );
 
 
--- =========================================================
--- INSERINDO CATEGORIAS
--- =========================================================
+-- INSERINDO DADOS NO BD
+INSERT INTO cliente (nome,email,telefone,cidade,ativo) VALUES
+('Livia Stein','livia@email.com','1999999000','Limeira',TRUE),
+('Arthur Nunes','arthur@email.com','1999999901','Rondonia',TRUE),
+('Beatriz Raissa','beatriz@email.com','1999999902','Limeira',TRUE),
+('Dandara Dias','dandara@email.com','1999999903','Limeira',TRUE),
+('Davi Ferreira','davi@email.com',NULL,'Limeira',TRUE),
+('Felipe Rodrigues','felipe@email.com',NULL,'Limeira',TRUE),
+('Francisco Magri','chico@email.com','199999903','Limeira',TRUE),
+('Franz Kramer','franz@email.com','199999904','Limeira',TRUE),
+('Gabriel Nogueira','gabriel@email.com','199999905','Limeira',TRUE),
+('Gabrielli Araujo','gabrielli@email.com','199999906','Americana',TRUE),
+('Isabella Alves','isabella@email.com',NULL,'Limeira',TRUE),
+('Keynan Santos','keynan@email.com','199999907','Santos',TRUE),
+('Larissa Ramires','larissa@email.com','199999908','Limeira',TRUE),
+('Leonardo Dias','leonardo@email.com','199999909','Valinhos',TRUE),
+('Luana Lima','luana@email.com','199999910','Limeira',TRUE),
+('Luccas Manfredi','lucas@email.com','199999911','Campinas',TRUE);
 
 INSERT INTO categoria (nome) VALUES
-('Cafés'),
-('Bebidas Geladas'),
-('Bebidas Quentes'),
-('Salgados'),
-('Sobremesas'),
-('Combo');
+('Cafés'),('Bebidas Geladas'),('Bebidas Quentes'),('Salgados'),('Sobremesas'),('Combo');
 
+INSERT INTO produto (nome,preco,ativo,id_categoria) VALUES
+('Espetinho de Carne',7.00,TRUE,@categorias_novas);
+
+INSERT INTO pedido (data_pedido, status, valor_total, id_cliente) VALUES ('2026-10-02 08:16:00', 'PREPARANDO', 0.00, 17);
+INSERT INTO pedido (data_pedido, status, valor_total, id_cliente) VALUES (NOW(), 'FINALIZADO', 0.00, 17);
 
 -- VERIFICAR ÚLTIMO INSERT REALIZADO OU FEITO
-
-INSERT INTO categoria (nome)
-VALUES ('Doces');
-
+INSERT INTO categoria (nome) VALUES
+('Especiais da House');
 SET @categoria = LAST_INSERT_ID();
-
 SELECT @categoria;
+---------------------------------------------
+-- ATRIBUIR NOMES AOS IDS
+INSERT INTO categoria (nome) VALUES
+('Combos Extras');
+SET @categorias_novas = (SELECT nome FROM categoria WHERE nome = 'Combos Extras');
+
+SELECT @categorias_novas;
 
 
--- =========================================================
--- ATUALIZANDO OU MODIFICANDO DADOS NO BD
--- =========================================================
 
--- LEMBRAR DE SEMPRE EXECUTAR O SELECT
--- PARA VALIDAR O UPDATE
+SELECT * FROM cliente;
 
+-- ATULIZANDO OU MODIFICANDO DADOS NO BD
+-- LEMBRAR DE SEMPRE EXECUTAR O SELECT PARA ATUALIZAR (UPDATE)
+-- E NUNCA JAMAIS NEVER FAÇA UM UPDATE SEM WHERE 😤
 -- EX 1: MODIFICANDO VALORES INDIVIDUAIS
-
-SELECT *
-FROM cliente
-WHERE id_cliente = 9;
-
 UPDATE cliente
 SET telefone = '1988880001'
-WHERE id_cliente = 9;
-
-
--- SEGUNDO EXEMPLO
-
-SELECT *
-FROM cliente
-WHERE id_cliente = 9;
+WHERE id_cliente = 9
 
 UPDATE cliente
 SET telefone = '000000000'
-WHERE id_cliente = 9;
-
 
 -- EX 2: MODIFICANDO VÁRIOS VALORES
-
-SELECT *
-FROM cliente
-WHERE id_cliente = 9;
-
 UPDATE cliente
 SET telefone = '1999999901',
     cidade = 'Piracicaba'
 WHERE id_cliente = 9;
 
 
--- =========================================================
 -- APAGAR DADOS DA TABELA NO BD
--- =========================================================
-
-SELECT *
-FROM cliente
-WHERE id_cliente = 9;
-
 DELETE FROM cliente
 WHERE id_cliente = 9;
 
 
--- =========================================================
 -- CONSULTAR DADOS NO BD
--- =========================================================
-
-SELECT *
-FROM cliente;
-
-SELECT *
-FROM categoria;
+SELECT * FROM cliente;
+WHERE id_cliente = 9;
+SELECT * FROM categoria;
 
 
--- =========================================================
+
 -- INSERINDO DADOS NO BD
--- =========================================================
-
-INSERT INTO cliente
-(nome, email, telefone, cidade, ativo)
-VALUES
+INSERT INTO cliente (nome, email, telefone, cidade, ativo) VALUES
 ('Luis Felipe','luis@email.com','1999999901','Limeira',TRUE),
 ('Maria Eduarda','maria@email.com','1999999902','Limeira',TRUE),
 ('Mateus Silva','mateus@email.com','1999999903','Limeira',TRUE),
@@ -209,31 +156,12 @@ VALUES
 ('Vinicius Henrique','vinicius@email.com','1999999913','Limeira',TRUE),
 ('Vinicius Oliveira','viniciuso@email.com','1999999914','Chicago',TRUE);
 
+SELECT * FROM produto;
 
-SELECT *
-FROM cliente;
+INSERT INTO categoria (nome) VALUES
+('Café'),('Bebidas Quentes'),('Bebidas Geladas'),('Doces'),('Salgados'),('Combo');
 
-
--- =========================================================
--- INSERINDO CATEGORIAS
--- =========================================================
-
-INSERT INTO categoria (nome)
-VALUES
-('Café'),
-('Bebidas'),
-('Chá'),
-('coxinha'),
-('iogurte com granola');
-
-
--- =========================================================
--- INSERINDO PRODUTOS
--- =========================================================
-
-INSERT INTO produto
-(nome, preco, ativo, id_categoria)
-VALUES
+INSERT INTO produto (nome, preco, ativo, id_categoria) VALUES
 ('Café Expresso', 5.00, TRUE, 1),
 ('Cappuccino', 7.50, TRUE, 2),
 ('Chocolate Quente', 6.00, TRUE, 2),
@@ -245,130 +173,57 @@ VALUES
 ('Croissant', 4.00, TRUE, 5),
 ('Combo Café da Manhã', 15.00, TRUE, 6);
 
-
--- =========================================================
--- INSERINDO PEDIDOS
--- =========================================================
-
-INSERT INTO pedido
-(data_pedido, status_pedido, valor_total, id_cliente)
-VALUES
+INSERT INTO pedido (data_pedido, status_pedido, valor_total, id_cliente) VALUES
 (NOW(),'ABERTO',0.00,1),
 ('2026-10-02 08:30:00','FINALIZADO',0.00,1),
 (NOW(),'ABERTO',0.00,1);
 
-
--- =========================================================
--- INSERINDO ITENS DO PEDIDO
--- =========================================================
-
-INSERT INTO item_pedido
-(id_pedido, id_produto, quantidade, preco_unitario, observacao)
-VALUES
+INSERT INTO item_pedido (id_pedido, id_produto, quantidade, preco_unitario, observacao) VALUES
 (1, 1, 2, 5.00, 'Sem açúcar'),
 (1, 6, 1, 8.00, NULL),
 (2, 2, 1, 7.50, 'Com canela'),
 (2, 4, 2, 4.50, NULL),
 (3, 10, 1, 15.00, 'Sem ovo');
 
+INSERT INTO forma_pagamento (descricao) VALUES
+('Dinheiro'),('Cartão de Crédito'),('Cartão de Débito'),('Pix');
 
--- =========================================================
--- FORMAS DE PAGAMENTO
--- =========================================================
-
-INSERT INTO forma_pagamento (descricao)
-VALUES
-('Dinheiro'),
-('Cartão de Crédito'),
-('Cartão de Débito'),
-('Pix');
-
-
--- =========================================================
--- PAGAMENTOS
--- =========================================================
-
-INSERT INTO pagamento
-(id_pedido, id_forma_pagamento, valor, data_pagamento)
-VALUES
+INSERT INTO pagamento (id_pedido, id_forma_pagamento, valor, data_pagamento) VALUES
 (2, 2, 19.50, '2026-10-02 08:45:00'),
 (2, 4, 0.00, NOW()),
-(3, 4, 15.00, NULL);
+(3, 4, 15.00, NULL);    
 
-
--- =========================================================
--- EXEMPLO NOVO DE INSERÇÃO DE DADOS
--- PORÉM COM RECUPERAÇÃO DO ÚLTIMO ID
--- =========================================================
-
-INSERT INTO pedido
-(data_pedido, status_pedido, valor_total, id_cliente)
-VALUES
-(NOW(), 'ABERTO', 0.00, 1);
-
+----------------------------------------
+-- EXEMPLO NOVO DE INSERÇÃO DE DADOS PORÉM COM RECUPERAÇÃO DO ÚLTIMO ID
+INSERT INTO pedido (data_pedido, status_pedido, valor_total, id_cliente) VALUES (NOW(), 'ABERTO','0.00',1);
 SET @pedido = LAST_INSERT_ID();
-
 SELECT @pedido;
 
+--------------------------------------------------
 
--- =========================================================
 -- ATUALIZAÇÕES E MODIFICAÇÕES DE DADOS
--- =========================================================
-
 -- EX 1
-
-SELECT *
-FROM cliente
-WHERE id_cliente = 9;
-
 UPDATE cliente
 SET telefone = '1999888802'
 WHERE id_cliente = 9;
 
-
--- EX 2
-
-SELECT *
-FROM produto
-WHERE id_produto = 1;
-
+-- EX 2:
 UPDATE produto
-SET preco = 1.00
-WHERE id_produto = 1;
+SET preco = 1.00;
+-- NUNCA REALIZAR UM UPDATE SEM --- WHERE 😤
 
-
--- NUNCA REALIZAR UM UPDATE SEM WHERE
-
-
--- EX 3
-
-SELECT *
-FROM cliente
-WHERE id_cliente = 11;
-
+-- EX: 3
 UPDATE cliente
 SET telefone = '1997777701',
     cidade = 'Valinhos'
 WHERE id_cliente = 11;
 
-
--- EX 4: AJUSTES DE VALORES
-
-SELECT *
-FROM produto
-WHERE id_categoria = 1;
-
+-- EX 4: Ajustes de valores
 UPDATE produto
 SET preco = preco * 1.05
 WHERE id_categoria = 1;
 
-
--- EX 5: AJUSTES DE ATUALIZAÇÕES CONDICIONAIS
-
-SELECT *
-FROM produto
-WHERE ativo = TRUE;
-
+-- EX 5: Ajustes de atualizações condicionais
 UPDATE produto
 SET preco = CASE
     WHEN preco <= 20 THEN preco * 1.20
@@ -376,208 +231,83 @@ SET preco = CASE
 END
 WHERE ativo = TRUE;
 
-
--- =========================================================
+--------------------------------------
 -- APAGAR DADOS DO BD
--- =========================================================
 
--- EX 1: APAGAR UM CLIENTE ESPECÍFICO
-
-SELECT *
-FROM cliente
-WHERE id_cliente = 11;
-
+-- EX 1: Apagar um cliente específico
 DELETE FROM cliente
 WHERE id_cliente = 11;
 
-
--- EX 2: APAGAR TODOS OS CLIENTES INATIVOS
-
-SELECT *
-FROM cliente
-WHERE ativo = FALSE;
-
+-- EX 2 : Apagar todos os clientes inativos
 DELETE FROM cliente
 WHERE ativo = FALSE;
 
-
--- EX 3: APAGAR TODOS OS CLIENTES DE UMA CIDADE ESPECÍFICA
-
-SELECT *
-FROM cliente
-WHERE cidade = 'Chicago';
-
+-- EX 3 : Apagar todos os clientes de uma cidade específica
 DELETE FROM cliente
 WHERE cidade = 'Chicago';
 
-
--- EX 4: EXCLUSÃO LÓGICA
-
-SELECT *
-FROM cliente
-WHERE id_cliente = 10;
-
+-- EX 4: Exclusão lógica
 UPDATE cliente
 SET ativo = FALSE
 WHERE id_cliente = 10;
 
+select * from cliente;
 
-SELECT *
-FROM cliente;
-
-
--- =========================================================
 -- TRANSAÇÕES - SEGURANÇA PARA DML
--- =========================================================
-
 START TRANSACTION;
-
-
-SELECT id_produto, nome, preco
-FROM produto
-WHERE id_categoria = 1;
-
-
 UPDATE produto
 SET preco = preco * 2.80
 WHERE id_categoria = 1;
 
-
 SELECT id_produto, nome, preco
 FROM produto
 WHERE id_categoria = 1;
-
-
--- DESFAZ O QUE FIZEMOS ERRADO
--- OU VOLTA UMA TRANSAÇÃO
-
+-- DESFAZ O QUE FIZEMOS ERRADO OU VOLTA UMA TRANSAÇÃO
 ROLLBACK;
-
-
--- =========================================================
 -- VALIDA O PROCEDIMENTO DE TRANSAÇÃO
--- =========================================================
-
-START TRANSACTION;
-
-
-SELECT *
-FROM cliente
-WHERE id_cliente = 10;
-
-
-UPDATE cliente
-SET cidade = 'Santos'
-WHERE id_cliente = 10;
-
-
-SELECT *
-FROM cliente
-WHERE id_cliente = 10;
-
-
 COMMIT;
 
+START TRANSACTION;
+UPDATE cliente SET cidade = 'Santos' WHERE id_cliente = 121;
+SELECT * FROM cliente WHERE id_cliente = 121;
+COMMIT;
+ROLLBACK;
 
--- =========================================================
--- PROCEDIMENTO DE UMA COMPRA
--- =========================================================
-
+-- PROCEDIMENTO DE UMA COMPRA 
 -- PASSO 1: REALIZAR CADASTRO CLIENTE
-
-INSERT INTO cliente
-(nome, email, telefone, cidade, ativo)
-VALUES
-(
-    'Carlos Silva',
-    'carlos.silva3@email.com',
-    '19999999999',
-    'Santos',
-    TRUE
-);
-
+INSERT INTO cliente (nome,email,telefone,cidade,ativo) VALUES ('Carlos Silva','carlos.silva3@email.com','19999999999','Santos',TRUE);
 SET @cliente_compra = LAST_INSERT_ID();
 
-
 -- PASSO 2: REALIZAR PEDIDO
-
-INSERT INTO pedido
-(data_pedido, status_pedido, valor_total, id_cliente)
-VALUES
-(
-    NOW(),
-    'ABERTO',
-    0.00,
-    @cliente_compra
-);
-
+INSERT INTO pedido (data_pedido,status,valor_total,id_cliente) VALUES
+(NOW(),'ABERTO',0.00,@cliente_compra);
 SET @pedido_compra = LAST_INSERT_ID();
 
-
 -- PASSO 3: INSERINDO ITENS
+INSERT into item_pedido (id_pedido, id_produto,quantidade, preco_unitario) VALUES (@pedido_compra,4,1,13.00), (@pedido_compra,9,1,9.00);
 
-INSERT INTO item_pedido
-(id_pedido, id_produto, quantidade, preco_unitario)
-VALUES
-(@pedido_compra, 4, 1, 13.00),
-(@pedido_compra, 9, 1, 9.00);
-
-
--- PASSO 4: ATUALIZANDO TOTAL E STATUS
-
-SELECT *
-FROM pedido
-WHERE id_pedido = @pedido_compra;
-
-
+-- PASSO 4 - ATUALIZANDO TOTAL E STATUS
 UPDATE pedido
 SET valor_total = 22.00,
-    status_pedido = 'PREPARANDO'
+    status = 'PREPARANDO'
 WHERE id_pedido = @pedido_compra;
 
+-- PASSO 5 - REGISTRAR PAGAMENTO
+INSERT INTO pagamento (id_pedido,id_forma_pagamento,valor,data_pagamento) VALUES (@pedido_compra,2,22.00,NOW());
 
--- PASSO 5: REGISTRAR PAGAMENTO
-
-INSERT INTO pagamento
-(id_pedido, id_forma_pagamento, valor, data_pagamento)
-VALUES
-(
-    @pedido_compra,
-    2,
-    22.00,
-    NOW()
-);
-
-
--- PASSO 6: CONSULTAR PEDIDO E RESULTADO
-
-SELECT
-    p.id_pedido,
-    c.nome AS Nome_Cliente,
-    p.status_pedido AS Status_Pedido,
-    p.valor_total AS Compra_Total
+-- PASSO 6 - CONSULTAR PEDIDO E RESULTADO
+SELECT p.id_pedido,
+       c.nome AS Nome_Cliente,
+       p.status AS Status_Pedido,
+       p.valor_total AS Compra_Total
 FROM pedido p
-JOIN cliente c
-    ON c.id_cliente = p.id_cliente
+JOIN cliente c ON c.id_cliente = p.id_cliente
 WHERE p.id_pedido = @pedido_compra;
 
-
--- =========================================================
--- PASSO 7: RELATÓRIO
--- =========================================================
-
+-- PASSO 7 - RELATÓRIO
 -- PASSO 1
-
-SELECT nome
-FROM cliente
-WHERE id_cliente = @cliente_compra;
-
-SELECT nome
-FROM cliente
-WHERE id_cliente = 121;
+SELECT nome FROM cliente WHERE id_cliente = @cliente_compra;
+SELECT nome FROM cliente WHERE id_cliente = 121;
 
 -- PASSO 2
-
-SELECT *
-FROM pedido
-WHERE id_pedido = @pedido_compra;
+SELECT * FROM pedido WHERE id_pedido = @pedido_compra;

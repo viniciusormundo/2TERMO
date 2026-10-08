@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SmartCoffe</title>
+    <title>SmartCoffe | Café que conecta</title>
 
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS CORRETO -->
+    <link rel="stylesheet" href="css/style.css">
 
+    <!-- Fontes -->
     <link
         href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=DM+Serif+Display&family=Poppins:wght@400;500;600&display=swap"
         rel="stylesheet">
@@ -18,7 +20,7 @@
 
     <!-- ================= HEADER ================= -->
 
-    <header class="header">
+    <header class="header" id="inicio">
 
         <a href="#inicio" class="logo">
             SmartCoffe
@@ -27,277 +29,527 @@
         <nav class="menu">
 
             <a href="#inicio">Início</a>
-
             <a href="#sobre">Sobre</a>
-
             <a href="#produtos">Produtos</a>
-
             <a href="#ambiente">Ambiente</a>
-
             <a href="#contato">Contato</a>
+
+            <button class="pedido-btn" onclick="abrirPedido()">
+                Pedido
+                <span id="contador">0</span>
+            </button>
 
         </nav>
 
     </header>
 
 
-    <!-- ================= INÍCIO ================= -->
+    <!-- ================= HERO ================= -->
 
-    <section class="hero" id="inicio">
+    <main>
 
-        <div class="hero-texto">
+        <section class="hero">
 
-            <h1>
-                Café que<br>
-                conecta as pessoas
-            </h1>
+            <div class="hero-texto">
 
-            <p>
-                Mais que um café, uma experiência
-            </p>
+                <h1>
+                    Café que<br>
+                    conecta as pessoas
+                </h1>
 
-            <a href="#produtos" class="botao">
-                Ver cardápio ➜
-            </a>
+                <p>
+                    Mais que um café, uma experiência
+                </p>
 
-        </div>
-
-
-        <div class="imagem-box imagem-principal">
-
-            <div class="circulo"></div>
-
-            <div class="triangulo"></div>
-
-            <span>Imagem principal</span>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= SOBRE ================= -->
-
-    <section class="sobre" id="sobre">
-
-        <div class="imagem-box imagem-sobre">
-
-            <div class="circulo"></div>
-
-            <div class="triangulo"></div>
-
-        </div>
-
-
-        <div class="sobre-texto">
-
-            <h2>Sobre nós</h2>
-
-            <div class="linhas">
-
-                <span></span>
-
-                <span></span>
-
-                <span></span>
-
-                <span></span>
+                <a href="#produtos" class="botao">
+                    Ver cardápio →
+                </a>
 
             </div>
 
-            <a href="#ambiente" class="botao botao-menor">
-                Saiba mais
-            </a>
 
-        </div>
+            <div class="imagem-box imagem-principal">
 
-    </section>
+                <div class="circulo"></div>
+                <div class="triangulo"></div>
 
+                <span>
+                    Imagem principal
+                </span>
 
-    <!-- ================= PRODUTOS ================= -->
+            </div>
 
-    <section class="produtos" id="produtos">
-
-        <div class="titulo-produtos">
-
-            <span>Nossos produtos</span>
-
-            <h2>Nosso café</h2>
-
-        </div>
+        </section>
 
 
-        <div class="cards">
+        <!-- ================= SOBRE ================= -->
 
-            <!-- CARD 1 -->
+        <section class="sobre" id="sobre">
 
-            <article class="card">
+            <div class="imagem-box imagem-sobre">
 
-                <div class="card-imagem">
+                <div class="circulo"></div>
+                <div class="triangulo"></div>
 
-                    <div class="circulo pequeno"></div>
+            </div>
 
-                    <div class="triangulo pequeno-triangulo"></div>
+
+            <div class="sobre-texto">
+
+                <h2>
+                    Sobre nós
+                </h2>
+
+                <div class="linhas">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <p>
+                    Na SmartCoffe, cada café é preparado
+                    para transformar momentos simples
+                    em boas experiências.
+                </p>
+
+                <a href="#ambiente" class="botao botao-menor">
+                    Saiba mais
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PRODUTOS ================= -->
+
+        <section class="produtos" id="produtos">
+
+            <div class="titulo-produtos">
+
+                <span>
+                    Nossos produtos
+                </span>
+
+                <h2>
+                    Nosso café
+                </h2>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div class="filtros">
+
+                <button
+                    class="filtro ativo"
+                    onclick="filtrarProdutos('todos', this)">
+                    Todos
+                </button>
+
+                <button
+                    class="filtro"
+                    onclick="filtrarProdutos('cafe', this)">
+                    Cafés
+                </button>
+
+                <button
+                    class="filtro"
+                    onclick="filtrarProdutos('bebida', this)">
+                    Bebidas
+                </button>
+
+                <button
+                    class="filtro"
+                    onclick="filtrarProdutos('comida', this)">
+                    Comidas
+                </button>
+
+            </div>
+
+
+            <!-- CARDS -->
+
+            <div class="cards">
+
+
+                <!-- CARD 1 -->
+
+                <article class="card" data-categoria="cafe">
+
+                    <div class="card-imagem">
+
+                        <div class="circulo pequeno"></div>
+                        <div class="triangulo pequeno-triangulo"></div>
+
+                    </div>
+
+                    <div class="card-texto">
+
+                        <h3>
+                            Cappuccino
+                        </h3>
+
+                        <p>
+                            Equilíbrio entre sabor e cremosidade.
+                        </p>
+
+                        <div class="card-final">
+
+                            <strong>
+                                R$ 14,90
+                            </strong>
+
+                            <button
+                                class="adicionar"
+                                onclick="adicionarPedido('Cappuccino', 14.90)">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CARD 2 -->
+
+                <article class="card" data-categoria="cafe">
+
+                    <div class="card-imagem">
+
+                        <div class="circulo pequeno"></div>
+                        <div class="triangulo pequeno-triangulo"></div>
+
+                    </div>
+
+                    <div class="card-texto">
+
+                        <h3>
+                            Latte Caramelo
+                        </h3>
+
+                        <p>
+                            Leve, doce e irresistível.
+                        </p>
+
+                        <div class="card-final">
+
+                            <strong>
+                                R$ 16,90
+                            </strong>
+
+                            <button
+                                class="adicionar"
+                                onclick="adicionarPedido('Latte Caramelo', 16.90)">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CARD 3 -->
+
+                <article class="card" data-categoria="cafe">
+
+                    <div class="card-imagem">
+
+                        <div class="circulo pequeno"></div>
+                        <div class="triangulo pequeno-triangulo"></div>
+
+                    </div>
+
+                    <div class="card-texto">
+
+                        <h3>
+                            Expresso Especial
+                        </h3>
+
+                        <p>
+                            Intenso como boas conversas.
+                        </p>
+
+                        <div class="card-final">
+
+                            <strong>
+                                R$ 12,90
+                            </strong>
+
+                            <button
+                                class="adicionar"
+                                onclick="adicionarPedido('Expresso Especial', 12.90)">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CARD 4 -->
+
+                <article class="card" data-categoria="bebida">
+
+                    <div class="card-imagem">
+
+                        <div class="circulo pequeno"></div>
+                        <div class="triangulo pequeno-triangulo"></div>
+
+                    </div>
+
+                    <div class="card-texto">
+
+                        <h3>
+                            Chá Gelado
+                        </h3>
+
+                        <p>
+                            Refrescante e perfeito para qualquer hora.
+                        </p>
+
+                        <div class="card-final">
+
+                            <strong>
+                                R$ 9,90
+                            </strong>
+
+                            <button
+                                class="adicionar"
+                                onclick="adicionarPedido('Chá Gelado', 9.90)">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CARD 5 -->
+
+                <article class="card" data-categoria="comida">
+
+                    <div class="card-imagem">
+
+                        <div class="circulo pequeno"></div>
+                        <div class="triangulo pequeno-triangulo"></div>
+
+                    </div>
+
+                    <div class="card-texto">
+
+                        <h3>
+                            Pão de Queijo
+                        </h3>
+
+                        <p>
+                            Quentinho e crocante.
+                        </p>
+
+                        <div class="card-final">
+
+                            <strong>
+                                R$ 8,00
+                            </strong>
+
+                            <button
+                                class="adicionar"
+                                onclick="adicionarPedido('Pão de Queijo', 8.00)">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CARD 6 -->
+
+                <article class="card" data-categoria="comida">
+
+                    <div class="card-imagem">
+
+                        <div class="circulo pequeno"></div>
+                        <div class="triangulo pequeno-triangulo"></div>
+
+                    </div>
+
+                    <div class="card-texto">
+
+                        <h3>
+                            Bolo de Chocolate
+                        </h3>
+
+                        <p>
+                            Cremoso, macio e feito para acompanhar café.
+                        </p>
+
+                        <div class="card-final">
+
+                            <strong>
+                                R$ 10,90
+                            </strong>
+
+                            <button
+                                class="adicionar"
+                                onclick="adicionarPedido('Bolo de Chocolate', 10.90)">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AMBIENTE ================= -->
+
+        <section class="ambiente" id="ambiente">
+
+            <div class="ambiente-texto">
+
+                <span>
+                    Nosso ambiente
+                </span>
+
+                <h2>
+                    Um espaço para<br>
+                    boas ideias
+                </h2>
+
+                <p>
+                    Ambiente moderno, acolhedor e pensado
+                    para trabalhar, estudar ou apenas relaxar.
+                </p>
+
+                <div class="horario">
+
+                    <strong>
+                        Horário
+                    </strong>
+
+                    <span>
+                        Seg - Sex: 08h às 20h
+                    </span>
+
+                    <span>
+                        Sáb - Dom: 09h às 18h
+                    </span>
 
                 </div>
 
-                <div class="card-texto">
+                <a href="#contato" class="botao botao-dourado">
+                    Conheça o espaço
+                </a>
 
-                    <h3>Cappuccino</h3>
+            </div>
+
+
+            <div class="imagem-box imagem-ambiente">
+
+                <div class="circulo ambiente-circulo"></div>
+                <div class="triangulo ambiente-triangulo"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTATO ================= -->
+
+        <section class="contato" id="contato">
+
+            <div class="contato-texto">
+
+                <span>
+                    CONTATO
+                </span>
+
+                <h2>
+                    FALE CONOSCO
+                </h2>
+
+                <p>
+                    Tem dúvidas, sugestões ou quer fazer
+                    um evento?
+                </p>
+
+                <p>
+                    Envie uma mensagem.
+                </p>
+
+
+                <div class="informacoes">
 
                     <p>
-                        Equilíbrio entre sabor e cremosidade.
+                        📍 Rua do Café, 100 — Centro
                     </p>
-
-                    <strong>R$ 14,90</strong>
-
-                </div>
-
-            </article>
-
-
-            <!-- CARD 2 -->
-
-            <article class="card">
-
-                <div class="card-imagem">
-
-                    <div class="circulo pequeno"></div>
-
-                    <div class="triangulo pequeno-triangulo"></div>
-
-                </div>
-
-                <div class="card-texto">
-
-                    <h3>Latte Caramelo</h3>
 
                     <p>
-                        Leve, doce e irresistível.
+                        ☎ (19) 99999-9999
                     </p>
-
-                    <strong>R$ 16,90</strong>
-
-                </div>
-
-            </article>
-
-
-            <!-- CARD 3 -->
-
-            <article class="card">
-
-                <div class="card-imagem">
-
-                    <div class="circulo pequeno"></div>
-
-                    <div class="triangulo pequeno-triangulo"></div>
-
-                </div>
-
-                <div class="card-texto">
-
-                    <h3>Expresso</h3>
 
                     <p>
-                        Especial e intenso como boas conversas.
+                        ✉ contato@smartcoffe.com
                     </p>
-
-                    <strong>R$ 12,90</strong>
 
                 </div>
 
-            </article>
-
-        </div>
-
-    </section>
+            </div>
 
 
-    <!-- ================= AMBIENTE ================= -->
-
-    <section class="ambiente" id="ambiente">
-
-        <div class="ambiente-texto">
-
-            <span>Nosso ambiente</span>
-
-            <h2>
-                Um espaço para<br>
-                boas ideias
-            </h2>
-
-            <p>
-                Ambiente moderno, acolhedor e pensado para
-                trabalhar, estudar ou apenas relaxar.
-            </p>
-
-            <a href="#contato" class="botao botao-dourado">
-                Conheça o espaço
-            </a>
-
-        </div>
-
-
-        <div class="imagem-box imagem-ambiente">
-
-            <div class="circulo ambiente-circulo"></div>
-
-            <div class="triangulo ambiente-triangulo"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= CONTATO ================= -->
-
-    <section class="contato" id="contato">
-
-        <div class="contato-texto">
-
-            <span>CONTATO</span>
-
-            <h2>FALE CONOSCO</h2>
-
-            <p>
-                Tem dúvidas, sugestões ou quer fazer
-                um evento?
-            </p>
-
-            <p>
-                Envie uma mensagem.
-            </p>
-
-        </div>
-
-
-        <form class="formulario">
-
-            <input
-                type="text"
-                placeholder="nome:"
-                required
+            <form
+                class="formulario"
+                id="formulario"
+                onsubmit="enviarFormulario(event)"
             >
 
-            <input
-                type="email"
-                placeholder="e-mail:"
-                required
-            >
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="nome:"
+                    required
+                >
 
-            <textarea
-                placeholder="mensagem:"
-                required
-            ></textarea>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="e-mail:"
+                    required
+                >
 
-            <button type="submit">
-                enviar mensagem
-            </button>
+                <textarea
+                    id="mensagem"
+                    placeholder="mensagem:"
+                    required
+                ></textarea>
 
-        </form>
+                <button type="submit">
+                    enviar mensagem
+                </button>
 
-    </section>
+            </form>
+
+        </section>
+
+    </main>
 
 
     <!-- ================= FOOTER ================= -->
@@ -310,19 +562,312 @@
 
         <nav class="menu">
 
-            <a href="#inicio">Início</a>
+            <a href="#inicio">
+                Início
+            </a>
 
-            <a href="#sobre">Sobre</a>
+            <a href="#sobre">
+                Sobre
+            </a>
 
-            <a href="#produtos">Produtos</a>
+            <a href="#produtos">
+                Produtos
+            </a>
 
-            <a href="#ambiente">Ambiente</a>
+            <a href="#ambiente">
+                Ambiente
+            </a>
 
-            <a href="#contato">Contato</a>
+            <a href="#contato">
+                Contato
+            </a>
 
         </nav>
 
     </footer>
+
+
+    <!-- ================= PEDIDO ================= -->
+
+    <div
+        class="pedido-overlay"
+        id="pedidoOverlay"
+        onclick="fecharPedido(event)"
+    >
+
+        <div
+            class="pedido-modal"
+            onclick="event.stopPropagation()"
+        >
+
+            <button
+                class="fechar"
+                onclick="fecharPedido()"
+            >
+                ×
+            </button>
+
+            <h2>
+                Seu pedido
+            </h2>
+
+            <div id="listaPedido">
+
+                <p class="pedido-vazio">
+                    Seu pedido está vazio.
+                </p>
+
+            </div>
+
+            <div class="pedido-total">
+
+                <span>
+                    Total:
+                </span>
+
+                <strong id="totalPedido">
+                    R$ 0,00
+                </strong>
+
+            </div>
+
+            <button
+                class="finalizar"
+                onclick="finalizarPedido()"
+            >
+                Finalizar pedido
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        let pedido = [];
+
+
+        /* ================= PEDIDO ================= */
+
+        function adicionarPedido(nome, preco) {
+
+            pedido.push({
+                nome: nome,
+                preco: preco
+            });
+
+            atualizarPedido();
+            abrirPedido();
+
+        }
+
+
+        function atualizarPedido() {
+
+            const lista =
+                document.getElementById("listaPedido");
+
+            const contador =
+                document.getElementById("contador");
+
+            const total =
+                document.getElementById("totalPedido");
+
+
+            contador.textContent = pedido.length;
+
+
+            if (pedido.length === 0) {
+
+                lista.innerHTML = `
+                    <p class="pedido-vazio">
+                        Seu pedido está vazio.
+                    </p>
+                `;
+
+                total.textContent = "R$ 0,00";
+
+                return;
+            }
+
+
+            lista.innerHTML = "";
+
+
+            let valorTotal = 0;
+
+
+            pedido.forEach((item, index) => {
+
+                valorTotal += item.preco;
+
+
+                const itemHTML =
+                    document.createElement("div");
+
+                itemHTML.classList.add("item-pedido");
+
+
+                itemHTML.innerHTML = `
+                    <div>
+                        <strong>
+                            ${item.nome}
+                        </strong>
+
+                        <span>
+                            R$ ${item.preco.toFixed(2).replace(".", ",")}
+                        </span>
+                    </div>
+
+                    <button onclick="removerItem(${index})">
+                        ×
+                    </button>
+                `;
+
+
+                lista.appendChild(itemHTML);
+
+            });
+
+
+            total.textContent =
+                `R$ ${valorTotal.toFixed(2).replace(".", ",")}`;
+
+        }
+
+
+        function removerItem(index) {
+
+            pedido.splice(index, 1);
+
+            atualizarPedido();
+
+        }
+
+
+        function abrirPedido() {
+
+            document
+                .getElementById("pedidoOverlay")
+                .classList.add("aberto");
+
+        }
+
+
+        function fecharPedido(event) {
+
+            if (
+                !event ||
+                event.target ===
+                document.getElementById("pedidoOverlay")
+            ) {
+
+                document
+                    .getElementById("pedidoOverlay")
+                    .classList.remove("aberto");
+
+            }
+
+        }
+
+
+        function finalizarPedido() {
+
+            if (pedido.length === 0) {
+
+                alert("Seu pedido está vazio.");
+
+                return;
+            }
+
+
+            alert(
+                "Pedido recebido com sucesso! ☕\n\n" +
+                "Obrigado por escolher a SmartCoffe."
+            );
+
+
+            pedido = [];
+
+            atualizarPedido();
+
+            fecharPedido();
+
+        }
+
+
+        /* ================= FILTRO ================= */
+
+        function filtrarProdutos(categoria, botaoClicado) {
+
+            const cards =
+                document.querySelectorAll(".card");
+
+            const botoes =
+                document.querySelectorAll(".filtro");
+
+
+            botoes.forEach(botao => {
+
+                botao.classList.remove("ativo");
+
+            });
+
+
+            botaoClicado.classList.add("ativo");
+
+
+            cards.forEach(card => {
+
+                const tipo =
+                    card.dataset.categoria;
+
+
+                if (
+                    categoria === "todos" ||
+                    tipo === categoria
+                ) {
+
+                    card.style.display = "block";
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+        }
+
+
+        /* ================= FORMULÁRIO ================= */
+
+        function enviarFormulario(event) {
+
+            event.preventDefault();
+
+
+            const nome =
+                document.getElementById("nome").value;
+
+
+            alert(
+                `Obrigado, ${nome}! ☕\n\n` +
+                "Sua mensagem foi enviada com sucesso."
+            );
+
+
+            document
+                .getElementById("formulario")
+                .reset();
+
+        }
+
+    </script>
 
 </body>
 
