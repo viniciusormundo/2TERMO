@@ -48,6 +48,35 @@ WHERE NOT cidade = 'limeira';
 
 -- EXTRA - UTILIZAR AND E OR JUNTOS, SEPARAR POR ()
 
+
 SELECT nome,cidade, ativo
 FROM cliente
 
+SELECT nome, preco
+FROM produto
+WHERE preco BETWEEN 8.00 AND 15.00;
+
+-- CONSULTA POR VALORES ENTRE 8 E 15
+
+SELECT id_pedido, data_pedido, valor_total
+FROM pedido
+WHERE data_pedido BETWEEN '2026-01-01 00:00:00' AND '2026-12-30 23:59:59';
+
+-- CONSULTA POR INTERVALO DE DATAS
+
+-- EX 7: EM VÁRIAS POSSIBILIDADES
+
+SELECT nome, cidade
+FROM cliente
+WHERE cidade IN ('Limeira', 'Campinas', 'Americana', 'Piracicaba');
+
+-- CONSULTA COM VÁRIAS CONDIÇÕES E DIMINUINDO O USO DE OR
+
+SELECT nome, cidade
+FROM cliente
+WHERE cidade NOT IN ('Limeira','Piracicaba');
+-- CONSULTAR COM EXESSÃO DOS VALORES ESPECIFICADOS
+
+-- EX 8: LIKE PESQUISAR POR TEXTOS
+--  CORINGAS
+-- % VARIOS CARACTERES
