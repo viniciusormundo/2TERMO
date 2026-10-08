@@ -59,27 +59,6 @@ CREATE TABLE pagamento (
     CONSTRAINT fk_pagamento_pedido FOREIGN KEY (id_pedido) REFERENCES pedido (id_pedido),
     CONSTRAINT fk_pagamento_forma_pagamento FOREIGN KEY (id_forma_pagamento) REFERENCES forma_pagamento (id_forma_pagamento)
 );
-
-
--- INSERINDO DADOS NO BD
-INSERT INTO cliente (nome,email,telefone,cidade,ativo) VALUES
-('Livia Stein','livia@email.com','1999999000','Limeira',TRUE)
-('Arthur Nunes','arthur@email.com','1999999901','Rondonia',TRUE),
-('Beatriz Raissa','beatriz@email.com','1999999902','Limeira',TRUE),
-('Dandara Dias','dandara@email.com','1999999903','Limeira',TRUE),
-('Davi Ferreira','davi@email.com',NULL,'Limeira',TRUE),
-('Felipe Rodrigues','felipe@email.com',NULL,'Limeira',TRUE),
-('Francisco Magri','chico@email.com','199999903','Limeira',TRUE),
-('Franz Kramer','franz@email.com','199999904','Limeira',TRUE),
-('Gabriel Nogueira','gabriel@email.com','199999905','Limeira',TRUE),
-('Gabrielli Araujo','gabrielli@email.com','199999906','Americana',TRUE),
-('Isabella Alves','isabella@email.com',NULL,'Limeira',TRUE),
-('Keynan Santos','keynan@email.com','199999907','Santos',TRUE),
-('Larissa Ramires','larissa@email.com','199999908','Limeira',TRUE),
-('Leonardo Dias','leonardo@email.com','199999909','Valinhos',TRUE),
-('Luana Lima','luana@email.com','199999910','Limeira',TRUE),
-('Luccas Manfredi','lucas@email.com','199999911','Campinas',TRUE);
-
 INSERT INTO categoria (nome) VALUES
 ('Cafés'),('Bebidas Geladas'),('Bebidas Quentes'),('Salgados'),('Sobremesas'),('Combo');
 
@@ -115,10 +94,7 @@ WHERE id_cliente = 9;
 
 -- CONSULTAR DADOS NO BD
 SELECT * FROM cliente;
-WHERE id_cliente = 9;
 SELECT * FROM categoria;
-
-
 
 -- INSERINDO DADOS NO BD
 INSERT INTO cliente (nome, email, telefone, cidade, ativo) VALUES
@@ -139,10 +115,10 @@ INSERT INTO cliente (nome, email, telefone, cidade, ativo) VALUES
 ('Vinicius Henrique','vinicius@email.com','1999999913','Limeira',TRUE),
 ('Vinicius Oliveira','viniciuso@email.com','1999999914','Chicago',TRUE);
 
-SELECT * FROM produto;
+SELECT * FROM cliente;
 
 INSERT INTO categoria (nome) VALUES
-('Café'),('Bebidas Quentes'),('Bebidas Geladas'),('Doces'),('Salgados'),('Combo');
+('Café'),('Bebidas'),('Chá'),('coxinha'),('iogurte com granola');
 
 INSERT INTO produto (nome, preco, ativo, id_categoria) VALUES
 ('Café Expresso', 5.00, TRUE, 1),

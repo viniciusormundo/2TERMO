@@ -1,6 +1,6 @@
--- Active: 1788435101647@@127.0.0.1@3306@smartcoffe_dml_vinicius
+
 USE SMARTCOFFE_DML_VINICIUS;
--- IMPORTANTE:
+-- IMPORTANTE:      
 -- Para toda questão de UPDATE ou DELETE, escreva primeiro um SELECT
 -- com o mesmo WHERE para validar os registros afetados.
 
