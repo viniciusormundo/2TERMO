@@ -47,11 +47,14 @@ SELECT MIN(preco) AS menor_preco, MAX(preco) AS maior_preco, ROUND(AVG(preco),2)
 AS media_preco FROM produto;
 
 -- 13. Informe quantos clientes existem em cada cidade.
-SELECT cidade, COUNT(*) AS Qtde_clientes FROM cliente GROUP BY cidade
+SELECT cidade, COUNT(*) AS Qtde_clientes FROM cliente GROUP BY cidade;
 
 -- 14. Mostre somente as cidades que possuem dois ou mais clientes.
+SELECT cidade, COUNT(*) AS quantidade_clientes FROM cliente 
+GROUP BY cidade HAVING COUNT(*) >= 2;
 
 -- 15. Calcule o faturamento total considerando apenas pedidos FINALIZADOS.
+
 
 -- PARTE D - RELACIONAMENTOS
 -- 16. Liste cada pedido exibindo id, data, nome do cliente, status e valor total.
