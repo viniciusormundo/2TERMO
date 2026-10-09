@@ -1,0 +1,58 @@
+/* ex - 1
+.ex {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px; 
+}
+
+/* ex 2  */
+.ex {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* ex - 3 */
+.ex{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+}
+/* fico maior pois o primiro fr ocupa duas partes, e o segundo ocupa uma parte, totalizando 3 partes, onde acaba sendo uma fração 2/3 e 1/3. */
+
+/* ex - 4 */ 
+.ex { 
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; 
+}
+
+/* ex - 5 */
+/* Desktop */
+@media (max-width: 900px) {
+  .ex {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+}
+
+/* Tablet */
+@media (max-width: 600px) {
+  .ex {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+ /* Celular */
+@media (max-width: 250px) {
+  .ex {
+    grid-template-columns: 1fr; 
+  }
+}
+
+/* Substitua as Media Queries da grade por auto-fit / minmax.   Com o auto-fit e minmax(), a grade torna-se responsiva automaticamente sem precisar de @media queries: */
+
+.ex {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}

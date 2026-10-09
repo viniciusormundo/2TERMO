@@ -1,0 +1,53 @@
+/* .grid-c{
+    display: grid;
+    /* grid = a grades usadas para separação de elementos em linhas e colunas 
+} */
+
+.grid-1 {
+    display: grid;
+    /* grid-template-columns:  1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap:  70px;
+    background-color: purple;
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+    align-items: center;
+}
+
+.grid-gal-img{
+    display: grid;
+    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+    gap: 23px;
+    list-style: none;
+    padding: 0;
+}
+
+img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Desktop */
+    @media (max-width: 900px){
+        .grid-gal-img{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    } 
+
+/* tablet */
+@media (max-width: 600px){
+    .grid-gal-img{
+        grid-template-columns:repeat(6, 1fr);
+    }
+}
+
+/* celular */
+@media (max-width: 300px){
+    .grid-gal-img{
+        grid-template-columns: 1fr;
+    }
+}
