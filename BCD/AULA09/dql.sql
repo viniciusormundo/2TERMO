@@ -349,3 +349,10 @@ group by C.id_cliente, C.nome
 order by total_comprado desc;
 
 -- EX 6 RALATORIO COMPLETO DO PEDIDO
+SELECT P.id_pedido, DATE_FORMAT(P.data_pedido, '%d %m %y %h %i') as DATA, C.nome as cliente, PR.nome as produto, IP.quantidade, IP.preco_unitario, quantidade * preco_unitario as subtotal
+from pedido as P
+inner join item_pedido as IP 
+on IP.id_pedido =p.id_pedido
+inner join produto as PR 
+on PR.id_produto = IP.id_produto
+order by P.id_pedido, PR.nome;
