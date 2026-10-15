@@ -283,3 +283,69 @@ GROUP BY colunas_agrupar
 HAVING condicao_agrupar
 ORDER BY colunas
 LIMIT quantidade;
+-------------------------------------------------------------------------------------
+-- PARTE II COM INNER JOIN, LEFT JOIN, RIGHT JOIN - CONSULTA DE ENIDADES RELACIONADOS
+
+-- INNER JOIN - CONSULTA DE REGSITROS RELACIONADOS ENTRE DUAS TABELAS
+-- RETORNA REGISTRO QUE POSSUEM CORRESPONDENCIA
+-- EX 1 : PEDIDOS COM O NOME DO CLIENTE
+
+select P.id_pedido, P.data_pedido, C.nome as cliente, P.valor_total
+from pedido as P
+inner join cliente as C
+on C.id_cliente = P.id_cliente;
+
+-- LEIA ON: CLIENET CUJO ID_CLIENTE É IGUAL AO ID_CLIENTE GRAVADO NO PEDIDO
+-- P E C SÃO APELIDOS QUE DEIXAM CONSULTAS  MAS CURTAS E LEGIVEIS.
+
+-- EX 2: LEFT JOIN MANTEM TODOS OS REGISTROS DA TABELA DA ESQUERDA MESMO QUANDO NAO EXISTE CORRESPONDENCIA NA TABELA DA DIREITA
+-- TODOS OS CLIENTES, INCLUSIVE QUEM NUNCA COMPROU
+select C.nome, P.id_pedido, P.data_pedido
+from cliente as C 
+LEFT join pedido as P 
+on P.id_cliente = C.id_cliente
+order by C.nome;
+
+-- DESCOBRINDO CLIENTES SEM PEIDOS
+SELECT C.id_cliente, C.nome 
+from cliente as C
+left join pedido as P 
+on P.id_cliente = C.id_cliente
+where P.id_pedido is null;
+
+-- EX 3: JOIN COM TRES TABELAS
+select p.id_pedido, PR.nome as produto, IP.quantidade, ip.preco_unitario, IP.quantidade * IP.preco_unitario as subtotal
+from pedido as P 
+inner join item_pedido as IP
+on IP.id_produto = IP.id_produto
+order by P.id_pedido;
+
+-- EX 4 JOIN COM CATEGORIA
+-- PRODUTO E NOME DE SUA CATEGORIA
+select PR.nome as produto, C.nome as categoria, PR.preco 
+from produto as PR 
+inner join categoria as C 
+on C.id_categoria = PR.id_categoria
+order by C.nome, PR.nome;
+
+-- EX 5: AGREGAÇÃO + JOIN 
+-- QUANTIDADE DE PRODUTOS POR CATEGORIAS
+SELECT C.nome AS CATEGORIA, COUNT(PR.id_produto) AS qtde_produtos
+FROM CATEGORIA AS C
+LEFT JOIN PRODUTO AS PR
+ON PR.id_categoria = C.id_categoria
+GROUP BY C.id_categoria, C.NOME
+ORDER BY qtde_produtos DESC;
+
+
+-- TOTAL COMPRADO POR CLIENTE
+select C.nome as cliente, count(P.id_pedido) as qtde_pedidos,
+sum(P.valor_total) as total_comprado
+from cliente as C
+inner join pedido as P
+on P.id_cliente = C.id_cliente
+where P.status_pedido = 'PREPARANDO'
+group by C.id_cliente, C.nome
+order by total_comprado desc;
+
+-- EX 6 RALATORIO COMPLETO DO PEDIDO
