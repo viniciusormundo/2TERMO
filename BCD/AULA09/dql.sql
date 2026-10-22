@@ -180,11 +180,8 @@ WHERE telefone IS NOT NULL;
 
 
 -- EX 10: ORDER BY - ORDENANDO RESULTADOS
-
 -- ASC: CRESCENTE
-
 -- DESC: DECRESCENTE
-
 
 SELECT nome, preco
 FROM produto
@@ -249,11 +246,11 @@ SELECT nome, COALESCE(telefone, 'Não Informado') AS telefone
 FROM cliente;
 
 -- EX 14: FUNÇÕES DE AGRUPAMENTO
--- COUNT
--- SUM
--- AVG
--- MIN
--- MAX
+-- COUNT localiza a quantidade de registros feitos
+-- SUM soma de todos os valores de uma coluna
+-- AVG calcula a media
+-- MIN menor valor
+-- MAX maior valor
 
 -- EX 15 GROUP BY - AGRUPAR DADOS
 SELECT cidade, COUNT (*) AS Quantidade_clientes

@@ -81,6 +81,7 @@ CREATE TABLE estoque (
     id_produto INT NOT NULL,
     quantidade INT NOT NULL DEFAULT 0,
     -- RESTRICOES
+    
     -- CHAVE PRIMARIA
     CONSTRAINT pk_estoque PRIMARY KEY (id_estoque),
     -- CHAVE UNIQUE OU UNICA

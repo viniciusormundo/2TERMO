@@ -103,8 +103,6 @@ SET @categorias_novas = (SELECT nome FROM categoria WHERE nome = 'Combos Extras'
 
 SELECT @categorias_novas;
 
-
-
 SELECT * FROM cliente;
 
 -- ATULIZANDO OU MODIFICANDO DADOS NO BD
