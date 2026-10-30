@@ -34,7 +34,7 @@ body {
 
 
 .inicio {
-    background: linear-gradient( #171735, #30205A);
+    background: linear-gradient( #380933);
     text-align: center;
     padding: 100px 20px;
 }
@@ -62,7 +62,7 @@ body {
 
 .botao {
     display: inline-block;
-    background-color: #FF3D81;
+    background-color: #7a0c33;
     color: white;
     text-decoration: none;
     padding: 13px 25px;
