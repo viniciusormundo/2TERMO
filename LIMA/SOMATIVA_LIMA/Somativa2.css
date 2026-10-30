@@ -19,7 +19,7 @@ body {
 }
 
 .cabecalho  {
-    color: #FF3D81;
+    color: #8b0936;
     font-size: 28px;
     text-decoration: none;
 }
@@ -34,7 +34,7 @@ body {
 
 
 .inicio {
-    background: linear-gradient( #380933);
+    background: linear-gradient( #25001d);
     text-align: center;
     padding: 100px 20px;
 }
