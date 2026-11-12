@@ -120,3 +120,14 @@ SELECT *
 FROM jogos
 WHERE titulo LIKE '%Mario%';
 
+SELECT *
+FROM jogos
+WHERE ano_lancamento BETWEEN 1990 AND 2005;
+
+SELECT
+    COUNT(*) AS total_jogos,
+    SUM(quantidade_disponivel) AS soma_estoque,
+    AVG(quantidade_disponivel) AS media_estoque,
+    MIN(quantidade_disponivel) AS menor_estoque,
+    MAX(quantidade_disponivel) AS maior_estoque
+FROM jogos;
