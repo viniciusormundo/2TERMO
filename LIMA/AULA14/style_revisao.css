@@ -4,11 +4,17 @@ body {
     margin: 0;
     padding: 0;
     /* border: 4px solid #FFFF; */
-    background-color: rgb(158, 2, 2);
+    background-color:  #101810;
+    
+}
+
+h3{
+    color: #FFFF;
 }
 
 .titulo-secao {
     display: flex;
+    background-image: linear-gradient(to right, #A4FF00, #FFFF);
 }
 
 .titulo span {
@@ -24,7 +30,7 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: end;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 .nav {
@@ -41,22 +47,108 @@ body {
     align-items: end;
 }
 
-img{
-    width: 100%;
+img {
     display: block;
+    max-width: 100%;
+    
 }
 
 .conteudo {
     display: flex;
-    gap: 30%;
+    gap: 25px;  
 }
 
 .conteudo-art {
     letter-spacing: 2px;
     line-height: 1.6;
-    border: 1px solid #dedede;
+    border: 1px solid #A4FF00;
+    border-radius: 8px;
+    color: #FFFF;
 }
 
-.conteudo.img {
-    
+.conteudo-img {
+    float: left;
+    margin: 0 12px 8px 0;
+    height: auto;
+    width: 100%;
+
+}
+
+
+.galeria {
+    margin: 0;
+    padding: 40px 20px;
+    background-color: #172B19;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.galeria-img {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid #A4FF00;
+    border-radius: 150px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-items: center;
+}
+  
+.galeria-img img {
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    gap: 48px;
+    border: 2px solid #FFFFFF;
+    border-radius: 300px;
+    justify-content: center;
+    align-items: right;
+    /* grid-auto-flow: row; */
+    transition: all 0.5s ease;
+}
+
+.galeria-img img:hover {
+    background-color: #A4FF00;
+    transform: scale(1.1);
+    box-shadow: 0px 0px 20px #A4FF00;
+    transform: translateX(120px) rotate (-12deg);
+}
+
+.galeria ul {
+    text-decoration: none;
+    list-style: none;
+}
+
+.imagem{
+    margin: 20px;
+    padding: 20px;
+}
+
+.imagem-img {
+    display: flex;
+    object-fit: cover;
+    object-position: right;
+}
+
+.cartoes {
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.cartoes:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 22px 34px -14px rgba(0, 0, 0, 0.04);
+}
+
+.cartoes-corpo {
+    overflow: hidden;
+}
+
+.cartoes-corpo img{
+    transition: transform 0.45s
+}
+
+@media (max-width: 768px) {
+    .galeria {
+        grid-template-columns: repeat(2,1fr);
+    }
 }
