@@ -1,0 +1,121 @@
+
+body {
+    background-color: #163053;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #333;
+    font-size: 9px;
+}
+
+
+header {
+    background-color: #0a2972;
+    color: white;
+    height: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+a {
+    color: white;
+}
+
+/* -------------------------------------------------------------- */
+
+.banner {
+    background-color:#b9dce5;
+    min-height: 85px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 7px;
+    padding: 15px;
+}
+
+.banner h2 {
+    font-size: 9px;
+}
+
+.banner p {
+    font-size: 9px;
+}
+
+/* ------------------------------------------------------------------ */
+
+.quadro {
+    background-color: #b9dce5;
+    height: 85px;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 7px;
+}
+
+
+.quadro {
+    background-color: white;
+    border: 1px solid #cbd2dc;
+    min-height: 54px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    padding: 10px;
+    text-align: center;
+}
+.imagen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 6px;
+}
+
+/* ------------------------------------------- */
+
+.informacoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.quadro-grande {
+    background-color: white;
+    min-height: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* --------------------------------------------------------------- */
+footer {
+    background-color: #243047;
+    color: white;
+    margin-top: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    font-size: 9px;
+}
+
+/* ------------------------------------------------------ */
+
+@media (max-width: 768px) {
+    .imagnes {
+        grid-template-columns: repeat(2,1fr);
+    }
+}

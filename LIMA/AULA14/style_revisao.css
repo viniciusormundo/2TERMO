@@ -168,7 +168,7 @@ img {
     color: white;
     background: #1b8301;
     transform: translateY(100%);
-    transition: transform 0.8 ease;
+    transition: transform 0.8s ease;
 }
 
 .imagem-final:hover figcaption {
